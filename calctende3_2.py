@@ -122,18 +122,28 @@ def prop():
         sum_list = []
         choice_list(sottopezzi, pezzi, index_n)
         index_n += 1
-
+    resti = []
     for i in df:
         print('_' * 50)
         # print(f'{i} -- {df[i]}\nresto -- {i - sum(df[i])}')
         print(f'{i} -- {sum(df[i])} = {df[i]}')
+        if (float(i[3:]) - sum(df[i])) != 0:
+            resti.append(float(i[3:]) - sum(df[i]))
+
     print('_' * 50)
     print(f'manca materiale per: {sottopezzi}')
-    print(f'sono avanzati {sum(pezzi)}')
+    print(f'avanzano:            {resti}')
+    # print(f'sono avanzati        {sum(pezzi)}')
     return ' '
 
 
-def pg_input():
+# 2.82 23.75 45.45 2.65 4.12 76.93 2.56 5.78 34.56 65.92 12.83 32.67 45.39 29.67 27.73 24.52 16.91 18.65
+# 234.45 345.67 178.89
+
+
+def pg_input(
+
+):
     m_tend = float(input('misura tenda:'.ljust(15, ' ')))
     m_stoff = float(input('stoffa'.ljust(15, ' ')))
     piega = float(input('piega:'.ljust(15, ' ')))
@@ -169,8 +179,6 @@ def pg():
     print(f"sarebbe perfetta con questa metratura di stoffa "
           f""
           f"{round((piega * (coef * 2) + ((coef - 1) * space)) + (piega_den * 2), 1)}")
-
-
 
 
 # ##########################################################

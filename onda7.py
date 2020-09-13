@@ -28,4 +28,6 @@ def ond( presunta_misura_bin, passo,  taschini_vuoti):
     else:
         bin -= 2
     cons()
-    print(f'nella misura della stoffa sono inclusi i 15 cm \n{40 * "*"}\n')
+    print(f'nella misura della stoffa sono inclusi i 15 cm \n{40 * "*"}\n'
+          f"{'taschini vuoti'.ljust(27, ' ')}{taschini_vuoti}"
+          )

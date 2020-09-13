@@ -28,7 +28,7 @@ def onda_input():
             misura_func()
 
         try:
-            while (misura_onda > 8) or (misura_onda < 2):
+            while (misura_onda > 16) or (misura_onda < 2):
                 print("[!] numero taschini non valido!..")
                 misura_onda = int(input('[>] taschini vuoti tra ganci\t')) + 1
         except ValueError:
