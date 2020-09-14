@@ -5,8 +5,9 @@ from onda7 import *
 from proportion import *
 from piega_tubolare import *
 
+
 def logo():
-    lst2="""
+    lst2 = """
 ╔═══╗     ╔╗         ╔════╗          ╔╗
 ║╔═╗║     ║║         ║╔╗╔╗║          ║║
 ║║ ╚╝╔══╗ ║║ ╔══╗    ╚╝║║╚╝╔══╗╔═╗ ╔═╝║
@@ -73,6 +74,7 @@ def stoffa_per_piega_fissa():
     coef = tenda / sa
     print(f'stoffa:\t{((coef * sa) + ((coef * 2) * (sa - 1))) + (piega_dentro * 2)}')
     print(f'piega:\t{coef}')
+
 
 # 2.82 23.75 45.45 2.65 4.12 76.93 2.56 5.78 34.56 65.92 12.83 32.67 45.39 29.67 27.73 24.52 16.91 18.65
 # 234.45 345.67 178.89

@@ -16,13 +16,13 @@ def prop():
         s = findall(patern, s)
         return list(map(lambda x: float(x), s))
 
-    def prop_n(lst, n):
+    def prop_n(lst2, n):
         a = 0
         ls = []
-        for i in range(len(lst) + 1):
-            ab = combinations(lst, i)
+        for item in range(len(lst2) + 1):
+            ab = combinations(lst2, item)
             for k in ab:
-                if sum(k) > a and sum(k) <= n:
+                if a < sum(k) <= n:
                     a = sum(k)
                     ls = k
                 else:
@@ -31,9 +31,9 @@ def prop():
 
     def choice_list(sottopezzi, pezzi, index_n):
 
-        for i in pezzi:
-            lst.append(prop_n(sottopezzi, i))
-            sum_list.append(i - sum(prop_n(sottopezzi, i)))
+        for piece in pezzi:
+            lst.append(prop_n(sottopezzi, piece))
+            sum_list.append(piece - sum(prop_n(sottopezzi, piece)))
         # print(sum_list)
         ind = sum_list.index(min(sum_list))
 
@@ -65,5 +65,3 @@ def prop():
     print(f'avanzano:            {resti}')
     # print(f'sono avanzati        {sum(pezzi)}')
     return ' '
-
-
