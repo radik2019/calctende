@@ -4,6 +4,8 @@ from onda import *
 from onda7 import *
 from proportion import *
 from piega_tubolare import *
+from piega_fissa import *
+from help import *
 
 
 def logo():
@@ -24,29 +26,19 @@ def logo():
         time.sleep(0.07)
 
 
-def help():
-    help_string = """
+def data_input(list_ask):
+    def list_of_measures(s):
+        try:
+            question = float(input(s.ljust(22, ' ')))
+            return question
+        except ValueError:
+            print("[!] i dati inseriti non sono validi!")
+            return list_of_measures(s)
+    list_mis = []
+    for ask in list_ask:
+        list_mis.append(list_of_measures(ask))
+    return list_mis
 
-		"stp" ---- calcolo della stoffa per la piega fissa'
-
-		"onda" --- tende a onda  
-
-		"onda7"--- tende a onda con fettuccia da 7 cm  
-
-		"piega"--- piega fissa 
-
-		"nastro"-- nastro barra 
-
-		"stop"---- chiude il programma 
-
-		"prop"---- taglio senza spreco scrivere i numeri divisi da spazio, i 
-			num non interi vanno scritti con il punto esem.: 2.3 4.67 etc   
-
-		"ptube"--- piega a tubo 
-
-		
-	"""
-    print(help_string)
 
 
 def onda_nod(misura_bin, passo, taschini_vuoti):
@@ -74,55 +66,6 @@ def stoffa_per_piega_fissa():
     coef = tenda / sa
     print(f'stoffa:\t{((coef * sa) + ((coef * 2) * (sa - 1))) + (piega_dentro * 2)}')
     print(f'piega:\t{coef}')
-
-
-# 2.82 23.75 45.45 2.65 4.12 76.93 2.56 5.78 34.56 65.92 12.83 32.67 45.39 29.67 27.73 24.52 16.91 18.65
-# 234.45 345.67 178.89
-
-
-# ##########################################################
-
-
-def pf_input():
-    piega_aprossimata = float(input("m. piega:".ljust(12, ' ')))
-    piega_dentro = float(input("m. dentro:".ljust(12, ' ')))
-    misura_tenda = float(input("m. tenda:".ljust(12, ' ')))
-    misura_stoffa = float(input("m. stoffa:".ljust(12, ' ')))
-    print('_' * 20)
-    return [piega_aprossimata, piega_dentro, misura_tenda, misura_stoffa]
-
-
-def pf(piega_aprossimata, piega_dentro, misura_tenda, misura_stoffa):
-    coef = ((piega_dentro * 2) + misura_tenda)
-    while misura_stoffa <= coef:
-        print('la stoffa non puo essere piu piccola della tenda')
-        misura_stoffa = float(input("m. stoffa: \t"))
-    numero_pieghe = (misura_tenda // piega_aprossimata)  # numero pieghe
-    misura_piega = (misura_tenda / numero_pieghe)  # dimensione pieghe
-    intervallo_piega = (misura_stoffa - misura_tenda - (piega_dentro * 2)) / \
-                       (numero_pieghe - 1)  # intrervallo tra pieghe
-    print(
-        '\n'
-        f'{"piega".ljust(12, " ")}{str(round(misura_piega, 1)).rjust(6, " ")}\n'
-        f'{"intervallo".ljust(12, " ")}{str(round(intervallo_piega, 1)).rjust(6, " ")}\n'
-        f'{"stoffa".ljust(12, " ")}{str(round(misura_stoffa, 1)).rjust(6, " ")}\n'
-        f'{"tenda".ljust(12, " ")}{str(round(misura_tenda, 1)).rjust(6, " ")}\n'
-        f'\n'
-        f'{"C A L C O L I".rjust(16, " ")}'
-    )
-
-    i = (misura_piega + intervallo_piega)
-    print('piega\t\t', (round(misura_piega, 1)))
-    print('intervallo\t', (round(i, 1)))
-    while i < 250:
-        i = i + misura_piega
-        print('piega\t\t', (round(i, 1)))
-        i = i + intervallo_piega
-        print('intervallo\t', (round(i, 1)))
-    print()
-
-
-###############################################################
 
 
 def nastro_barra():
@@ -162,8 +105,8 @@ if __name__ == "__main__":
             dom = input('[>]\t').lower()
 
             if dom in tendel:
-                lstpf = pf_input()
-                pf(lstpf[0], lstpf[1], lstpf[2], lstpf[3])
+
+                pf(data_input(list_ask_piega))
 
             elif dom in ondal:
                 lstonda = onda_input()
@@ -181,7 +124,7 @@ if __name__ == "__main__":
                 ond(lstond[0], lstond[1], lstond[2])
 
             elif dom == "ptube":
-                pg(pg_input())
+                pg(data_input(list_ask_tub))
 
             elif dom == "help":
                 help()
