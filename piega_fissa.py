@@ -29,6 +29,7 @@ def pf(list_data):
         print('intervallo\t', (round(i, 1)))
     print()
 
+
 list_ask_piega = [
     "m. piega:", "m. dentro:", "m. tenda:", "m. stoffa:"
 ]

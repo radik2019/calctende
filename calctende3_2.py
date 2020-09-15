@@ -1,4 +1,4 @@
-import itertools
+
 import time
 from onda import *
 from onda7 import *
@@ -6,16 +6,17 @@ from proportion import *
 from piega_tubolare import *
 from piega_fissa import *
 from help import *
+from stoffa_piegafissa import *
 
 
 def logo():
     lst2 = """
-╔═══╗     ╔╗         ╔════╗          ╔╗
-║╔═╗║     ║║         ║╔╗╔╗║          ║║
-║║ ╚╝╔══╗ ║║ ╔══╗    ╚╝║║╚╝╔══╗╔═╗ ╔═╝║
-║║ ╔╗╚ ╗║ ║║ ║╔═╝      ║║  ║╔╗║║╔╗╗║╔╗║
-║╚═╝║║╚╝╚╗║╚╗║╚═╗     ╔╝╚╗ ║║═╣║║║║║╚╝║
-╚═══╝╚═══╝╚═╝╚══╝     ╚══╝ ╚══╝╚╝╚╝╚══╝
+    ╔═══╗     ╔╗         ╔════╗          ╔╗
+    ║╔═╗║     ║║         ║╔╗╔╗║          ║║
+    ║║ ╚╝╔══╗ ║║ ╔══╗    ╚╝║║╚╝╔══╗╔═╗ ╔═╝║
+    ║║ ╔╗╚ ╗║ ║║ ║╔═╝      ║║  ║╔╗║║╔╗╗║╔╗║
+    ║╚═╝║║╚╝╚╗║╚╗║╚═╗     ╔╝╚╗ ║║═╣║║║║║╚╝║
+    ╚═══╝╚═══╝╚═╝╚══╝     ╚══╝ ╚══╝╚╝╚╝╚══╝
 
     """
 
@@ -40,7 +41,6 @@ def data_input(list_ask):
     return list_mis
 
 
-
 def onda_nod(misura_bin, passo, taschini_vuoti):
     # taschini_vuoti = int(input('taschini vuoti tra ganci:'.ljust(27, ' ')))
     # misura_bin = float(input('misura binario:'.ljust(27, ' ')))
@@ -51,21 +51,6 @@ def onda_nod(misura_bin, passo, taschini_vuoti):
     filo = numero_ganci * passo
     print(numero_ganci)
     print(filo)
-
-
-def stoffa_per_piega_fissa():
-    '''
-	si calcola la stoffa per la piega fissa.
-	nel risultato si include anche la piega dentro
-	:return: quanta stoffa devi avere
-	'''
-    tenda = float(input('tenda:\t\t'))
-    piega = int(input('piega:\t\t'))
-    piega_dentro = float(input('piega dentro:\t'))
-    sa = tenda // piega
-    coef = tenda / sa
-    print(f'stoffa:\t{((coef * sa) + ((coef * 2) * (sa - 1))) + (piega_dentro * 2)}')
-    print(f'piega:\t{coef}')
 
 
 def nastro_barra():
@@ -88,8 +73,6 @@ def nastro_barra():
     return ' '
 
 
-###############################################################
-
 if __name__ == "__main__":
     dom = 23
     logo()
@@ -105,7 +88,6 @@ if __name__ == "__main__":
             dom = input('[>]\t').lower()
 
             if dom in tendel:
-
                 pf(data_input(list_ask_piega))
 
             elif dom in ondal:
@@ -117,7 +99,7 @@ if __name__ == "__main__":
             elif dom in proporzioni:
                 prop()
             elif dom in st_piega:
-                stoffa_per_piega_fissa()
+                stoffa_per_piega_fissa(data_input(list_ask_stoffa))
 
             elif dom in onda7:
                 lstond = onda_input()

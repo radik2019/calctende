@@ -5,7 +5,7 @@ def onda_input():
     def pass_func():
         nonlocal passo
         try:
-            passo = int(input('[>] passo "8" o "6"\t\t\t'))
+            passo = int(input('[>] passo "8" o "6"'.ljust(29, " ")))
         except ValueError:
 
             pass_func()
@@ -14,7 +14,7 @@ def onda_input():
             while passo != 8 and passo != 6:
                 # if passo != 8 and passo != 6:
                 print("[!] il passo deve essere da 6 o da 8!")
-                passo = int(input('[>] passo "8" o "6"\t\t\t'))
+                passo = int(input('[>] passo "8" o "6'.ljust(29, " ")))
         except ValueError:
             print("[!] i dati inseriti non sono validi!\n[!] Riprova!\n\n")
             pass_func()
@@ -22,7 +22,7 @@ def onda_input():
     def misura_func():
         nonlocal misura_onda
         try:
-            misura_onda = int(input('[>] taschini vuoti tra ganci\t')) + 1
+            misura_onda = int(input('[>] taschini vuoti tra ganci'.ljust(29, " "))) + 1
         except ValueError:
             print("[!] deve contenere solo numeri!..")
             misura_func()
@@ -30,7 +30,7 @@ def onda_input():
         try:
             while (misura_onda > 16) or (misura_onda < 2):
                 print("[!] numero taschini non valido!..")
-                misura_onda = int(input('[>] taschini vuoti tra ganci\t')) + 1
+                misura_onda = int(input('[>] taschini vuoti tra ganci'.ljust(29, " "))) + 1
         except ValueError:
             print("[!] i dati inseriti non sono validi!\n[!] Riprova!\n\n")
             misura_func()
@@ -38,7 +38,7 @@ def onda_input():
     def binario_func():
         nonlocal binario
         try:
-            binario = float(input('[>] misura del binario\t\t'))
+            binario = float(input('[>] misura del binario'.ljust(29, " ")))
         except ValueError:
             print("[!] i dati inseriti non sono validi!")
             binario_func()
@@ -46,7 +46,7 @@ def onda_input():
         try:
             while binario < 100:
                 print("[!] binario troppo piccolo")
-                binario = float(input('[>] misura del binario\t\t'))
+                binario = float(input('[>] misura del binario'.ljust(29, " ")))
         except ValueError:
             print("[!] i dati inseriti non sono validi!")
             binario_func()

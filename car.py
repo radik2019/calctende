@@ -1,34 +1,21 @@
 
+m = 332
+p = 8
+t = 6
+
+def onda_nod(misura_bin, passo, taschini_vuoti):
+    # taschini_vuoti = int(input('taschini vuoti tra ganci:'.ljust(27, ' ')))
+    # misura_bin = float(input('misura binario:'.ljust(27, ' ')))
+    # passo = int(input('passo "8" o "6":'.ljust(27, ' ')))
+    numero_ganci = misura_bin // passo
+    if numero_ganci % 2 == 0:
+        numero_ganci += passo
+    filo = numero_ganci * passo
+    print(numero_ganci)
+    print(filo)
 
 
-def pg_input3():
-    def list_of_measures(s):
-        try:
-            question = float(input(s.ljust(22, ' ')))
-            return question
-        except ValueError:
-            print("[!] i dati inseriti non sono validi!")
-            return list_of_measures(s)
-
-    list_ask = [
-        'misura tenda:',
-        'stoffa:',
-        'piega:',
-        'piega dentro:',
-        'spazio tra pieghe:'
-    ]
-    list_mis = []
-
-    for ask in list_ask:
-        list_mis.append(list_of_measures(ask))
-
-
-    return list_mis
-
-print(pg_input3())
-
-
-
+onda_nod(m, p, t)
 
 
 

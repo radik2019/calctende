@@ -5,6 +5,7 @@ def ond( presunta_misura_bin, passo,  taschini_vuoti):
 	calcoli per la fettuccia da 7 cm
 	:return:
 	"""
+    taschini_vuoti -= 1
 
     task = 52 / 29
     task_sp = task * (taschini_vuoti + 1)
