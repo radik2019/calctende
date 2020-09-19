@@ -23,7 +23,7 @@ def logo():
     lst2 = lst2.split("\n")
 
     for i in lst2:
-        print(i)
+        print(Fore.CYAN, i)
         time.sleep(0.07)
 
 
@@ -39,8 +39,6 @@ def data_input(list_ask):
     for ask in list_ask:
         list_mis.append(list_of_measures(ask))
     return list_mis
-
-
 
 
 def nastro_barra():
@@ -75,6 +73,7 @@ if __name__ == "__main__":
         nastr = ['nastro', 'nastro_barra', 'nastrobarra', 'nastro barra']
         dom = 23
         while dom != 'stop':
+            print(Fore.LIGHTCYAN_EX)
             dom = input('[>]\t').lower()
 
             if dom in tendel:
