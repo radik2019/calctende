@@ -19,19 +19,21 @@ def onda_nod2( presunta_misura_bin, passo,  taschini_vuoti):
 	if bin % 2 == 0:
 		bin += 1
 
-	def cons(nod=0):
-		numero_nodi = 0
+	def cons(nod=0.0):
+		nonlocal bin
+		# numero_nodi = 0
 
 		line = '_' * 40
-
 
 		binario = bin * passo
 		numero_nodi = 0
 		if nod != 0:
 			print("\n\n", '*' * 15," NODI ",'*' * 15 )
+			print(bin)
 			while binario > (presunta_misura_bin - 1):
 				binario -= nod
 				numero_nodi += 1
+				print(numero_nodi)
 		else:
 			pass
 		s = (
@@ -62,4 +64,4 @@ def onda_nod2( presunta_misura_bin, passo,  taschini_vuoti):
 
 if __name__ == "__main__":
 
-	onda_nod2(234,8,6)
+	onda_nod2(241,8,6)
