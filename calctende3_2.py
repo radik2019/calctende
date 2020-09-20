@@ -99,5 +99,7 @@ if __name__ == "__main__":
 
             elif dom == "help":
                 help()
+            elif dom == "stop":
+                print("[!] a presto")
             else:
-                print('[!] commando non trovato...')
+                print('[!] commando non trovato...\n[!] "help" per la lista dei comandi')

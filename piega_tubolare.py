@@ -6,6 +6,9 @@ list_ask_tub = [
     'piega dentro:',
     'spazio tra pieghe:'
 ]
+"""
+piega tubolare
+"""
 
 
 def pg(lst):
