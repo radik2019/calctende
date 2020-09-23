@@ -7,6 +7,7 @@ from piega_tubolare import *
 from piega_fissa import *
 from help import *
 from stoffa_piegafissa import *
+from taglio_coeficiente import *
 
 
 def logo():
@@ -99,6 +100,12 @@ if __name__ == "__main__":
 
             elif dom == "help":
                 help()
+
+            elif dom in ["coeficente", "coef"]:
+                list_ask_coef = input_coef()
+                coef(list_ask_coef[0], list_ask_coef[1], list_ask_coef[2])
+
+
             elif dom == "stop":
                 print("[!] a presto")
             else:

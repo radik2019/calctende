@@ -23,7 +23,8 @@ def help():
 
 		"ptube"--- piega a tubo
 		    pg([misura_tend, misura_stoff, piega, piega_dentro, spazio_tra_pieghe])
-	
+		
+		"coef"---- divisione della stoffa per le tende da fare
 		    
 
 

@@ -1,8 +1,29 @@
+
 from re import sub
 from re import findall
 
+
+
+def string_to_list(num_expression):
+	s = sub(",", ".", num_expression)
+	patern = r"\d+\.\d+|\d+\,\d+|\d+"
+	s = findall(patern, s)
+	return list(map(lambda x: float(x), s))
+
+
 def input_coef():
-	pass
+	list_requests = ["misura stoffa", "piega_dentro"]
+
+	def misura_stoffa(answer):
+		try:
+			return float(input(answer.ljust(22, ' ')))
+
+		except ValueError:
+			print("[!] i dati inseriti non sono validi!")
+			return misura_stoffa()
+	return [misura_stoffa(list_requests[0]),
+		string_to_list(input("misura delle tende".ljust(22, ' '))),
+		misura_stoffa(list_requests[1])]
 
 
 def coef(stoffa, list_tend, piega_dentro):
@@ -11,23 +32,17 @@ def coef(stoffa, list_tend, piega_dentro):
 
 	lst = []
 	for i in list_tend:
-		print((i * cf) + (2 * piega_dentro))
+		print(i, "-----------", (i * cf) + (2 * piega_dentro))
 		lst.append((i * cf) + (2 * piega_dentro))
 
-	print(sum(lst))
+	
 
 	
-def string_to_list(num_expression):
-	s = sub(",", ".", num_expression)
-	patern = r"\d+\.\d+|\d+\,\d+|\d+"
-	s = findall(patern, s)
-	return list(map(lambda x: float(x), s))
+
 
 
 if __name__ == "__main__":
 
-	print(coef(591, [160, 130], 12))
-
-	print(string_to_list("23,23 434k2h234 234k2323.422j23hklj3"))
-
+	lst = input_coef()
+	print(coef(lst[0], lst[1], lst[2]))
 
