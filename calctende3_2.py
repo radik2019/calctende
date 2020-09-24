@@ -108,6 +108,8 @@ if __name__ == "__main__":
 
 
             elif dom == "stop":
-                print("[!] a presto")
+                print("[!] a presto!\n\n")
             else:
-                print('[!] commando non trovato...\n[!] "help" per la lista dei comandi')
+                print(Fore.LIGHTRED_EX)
+                print('[!] commando non trovato...\n[!] [ help ] per la lista dei comandi')
+                print(Fore.LIGHTCYAN_EX)
