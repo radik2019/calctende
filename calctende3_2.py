@@ -8,6 +8,7 @@ from piega_fissa import *
 from help import *
 from stoffa_piegafissa import *
 from taglio_coeficiente import *
+from colorama import *
 
 
 def logo():
@@ -76,7 +77,7 @@ if __name__ == "__main__":
         while dom != 'stop':
             print(Fore.LIGHTCYAN_EX)
             dom = input('[>]\t').lower()
-
+            print(Fore.LIGHTGREEN_EX)
             if dom in tendel:
                 pf(data_input(list_ask_piega))
 
