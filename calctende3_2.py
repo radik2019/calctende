@@ -111,5 +111,7 @@ if __name__ == "__main__":
                 print("[!] a presto!\n\n")
             else:
                 print(Fore.LIGHTRED_EX)
-                print('[!] commando non trovato...\n[!] [ help ] per la lista dei comandi')
+                print('[!] commando non trovato...\n'
+                    '[!] [ help ] per la lista dei comandi\n'
+                    '[!] [ stop ] per fermare il programma')
                 print(Fore.LIGHTCYAN_EX)
