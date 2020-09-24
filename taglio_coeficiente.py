@@ -3,7 +3,6 @@ from re import sub
 from re import findall
 
 
-
 def string_to_list(num_expression):
 	s = sub(",", ".", num_expression)
 	patern = r"\d+\.\d+|\d+\,\d+|\d+"
@@ -21,6 +20,7 @@ def input_coef():
 		except ValueError:
 			print("[!] i dati inseriti non sono validi!")
 			return misura_stoffa()
+
 	return [misura_stoffa(list_requests[0]),
 		string_to_list(input("misura delle tende".ljust(22, ' '))),
 		misura_stoffa(list_requests[1])]
@@ -29,16 +29,9 @@ def input_coef():
 def coef(stoffa, list_tend, piega_dentro):
 	sum_piega_dentr = (len(list_tend) * 2) * piega_dentro
 	cf = (stoffa - sum_piega_dentr) / sum(list_tend)
-
-	lst = []
+	print()
 	for i in list_tend:
-		print(i, "-----------", (i * cf) + (2 * piega_dentro))
-		lst.append((i * cf) + (2 * piega_dentro))
-
-	
-
-	
-
+		print(i, "-" * 10, (i * cf) + (2 * piega_dentro))
 
 
 if __name__ == "__main__":
