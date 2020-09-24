@@ -4,19 +4,16 @@ def onda_input():
 
     def pass_func():
         nonlocal passo
-        try:
-            passo = int(input('[>] passo "8" o "6"'.ljust(29, " ")))
-        except ValueError:
-
-            pass_func()
 
         try:
-            while passo != 8 and passo != 6:
-                # if passo != 8 and passo != 6:
-                print(Fore.LIGHTRED_EX)
-                print("[!] il passo deve essere da 6 o da 8!")
-                print(Fore.LIGHTGREEN_EX)
+            while True:
                 passo = int(input('[>] passo "8" o "6'.ljust(29, " ")))
+                if passo != 8 and passo != 6:
+                    print(Fore.LIGHTRED_EX)
+                    print("[!] il passo deve essere da 6 o da 8!")
+                    print(Fore.LIGHTGREEN_EX)
+                else:
+                    break
 
         except ValueError:
             print(Fore.LIGHTRED_EX)
@@ -26,25 +23,21 @@ def onda_input():
 
     def misura_func():
         nonlocal misura_onda
-        try:
-            misura_onda = int(input('[>] taschini vuoti tra ganci'.ljust(29, " "))) + 1
-        except ValueError:
-            print(Fore.LIGHTRED_EX)
-            print("[!] deve contenere solo numeri!..")
-            print(Fore.LIGHTGREEN_EX)
-            misura_func()
 
-        try:
-            while (misura_onda > 16) or (misura_onda < 2):
-                print(Fore.LIGHTRED_EX)
-                print("[!] numero taschini non valido!..")
-                print(Fore.LIGHTGREEN_EX)
+        while True:
+            try:
                 misura_onda = int(input('[>] taschini vuoti tra ganci'.ljust(29, " "))) + 1
-        except ValueError:
-            print(Fore.LIGHTRED_EX)
-            print("[!] i dati inseriti non sono validi!\n[!] Riprova!\n\n")
-            print(Fore.LIGHTGREEN_EX)
-            misura_func()
+                if (misura_onda > 16) or (misura_onda < 2):
+                    print(Fore.LIGHTRED_EX)
+                    print("[!] numero taschini non valido!..")
+                    print(Fore.LIGHTGREEN_EX)
+                else:
+                    break
+
+            except ValueError:
+                print(Fore.LIGHTRED_EX)
+                print("[!] i dati inseriti non sono validi!\n[!] Riprova!\n")
+                print(Fore.LIGHTGREEN_EX)
 
     def binario_func():
         nonlocal binario

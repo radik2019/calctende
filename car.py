@@ -1,27 +1,26 @@
 
-m = 332
-p = 8
-t = 6
+from colorama import Fore
 
-def onda_nod(misura_bin, passo, taschini_vuoti):
-    # taschini_vuoti = int(input('taschini vuoti tra ganci:'.ljust(27, ' ')))
-    # misura_bin = float(input('misura binario:'.ljust(27, ' ')))
-    # passo = int(input('passo "8" o "6":'.ljust(27, ' ')))
-    numero_ganci = misura_bin // passo
-    if numero_ganci % 2 == 0:
-        numero_ganci += passo
-    filo = numero_ganci * passo
-    print(numero_ganci)
-    print(filo)
+misura_onda = 0
 
 
-onda_nod(m, p, t)
+def misura_func():
+    global misura_onda
+
+    while True:
+        try:
+            misura_onda = int(input('[>] taschini vuoti tra ganci'.ljust(29, " "))) + 1
+            if (misura_onda > 16) or (misura_onda < 2):
+                print(Fore.LIGHTRED_EX)
+                print("[!] numero taschini non valido!..")
+                print(Fore.LIGHTGREEN_EX)
+            else:
+                break
+
+        except ValueError:
+            print(Fore.LIGHTRED_EX)
+            print("[!] i dati inseriti non sono validi!\n[!] Riprova!\n")
+            print(Fore.LIGHTGREEN_EX)
 
 
-
-
-
-
-
-
-
+misura_func()
