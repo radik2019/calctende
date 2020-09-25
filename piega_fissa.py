@@ -1,9 +1,11 @@
+from pretyPrint import *
+
 
 def pf(list_data):
     piega_aprossimata, piega_dentro, misura_tenda, misura_stoffa = list_data
     coef = ((piega_dentro * 2) + misura_tenda)
     while misura_stoffa <= coef:
-        print('la stoffa non puo essere piu piccola della tenda')
+        printAlert('la stoffa non puo essere piu piccola della tenda')
         misura_stoffa = float(input("m. stoffa: \t"))
     numero_pieghe = (misura_tenda // piega_aprossimata)  # numero pieghe
     misura_piega = (misura_tenda / numero_pieghe)  # dimensione pieghe
