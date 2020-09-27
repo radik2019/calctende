@@ -24,12 +24,20 @@ def pf(list_data):
     i = (misura_piega + intervallo_piega)
     print('piega\t\t', (round(misura_piega, 1)))
     print('intervallo\t', (round(i, 1)))
-    while i < 250:
+
+    asse_flag = True
+
+    while i < (misura_stoffa - piega_dentro * 2):
+
         i = i + misura_piega
         print('piega\t\t', (round(i, 1)))
         i = i + intervallo_piega
         print('intervallo\t', (round(i, 1)))
+        if asse_flag and 120 > i > 110:
+            print("*" * 40)
+            asse_flag = False
     print()
+
 
 
 list_ask_piega = [
