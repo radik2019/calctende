@@ -51,9 +51,17 @@ def pf(list_data):
         print('piega\t\t', (round(i, 1)))
         i = i + intervallo_piega
         print('intervallo\t', (round(i, 1)))
-        if asse_flag and 120 > i > 110:
-            print("*" * 40)
-            asse_flag = False
+
+
+        if asse_flag and 120 > i > 90:
+
+            if (i + misura_piega + intervallo_piega) > 120:
+
+                print("*" * 40)
+                asse_flag = False
+
+
+
     print()
 
 
@@ -61,4 +69,5 @@ if __name__ == "__main__":
     list_ask_piega = [
         "m. piega:", "m. dentro:", "m. tenda:", "m. stoffa:"
     ]
+
     pf(data_input(list_ask_piega))
