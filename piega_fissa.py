@@ -1,10 +1,12 @@
 from pretyPrint import *
 
-def pf(list_data):
+
+def pf(list_data, asse_da_stiro=121):
+
     piega_aprossimata, piega_dentro, misura_tenda, misura_stoffa = list_data
     coef = ((piega_dentro * 2) + misura_tenda)
     while misura_stoffa <= coef:
-        printAlert('la stoffa non puo essere piu piccola della tenda')
+        printAlert('[ ! ] la stoffa non puo essere piu piccola della tenda')
         misura_stoffa = float(input("m. stoffa: \t"))
     numero_pieghe = (misura_tenda // piega_aprossimata)  # numero pieghe
     misura_piega = (misura_tenda / numero_pieghe)  # dimensione pieghe
@@ -33,9 +35,9 @@ def pf(list_data):
         i = i + intervallo_piega
         print('intervallo\t', (round(i, 1)))
 
-        if asse_flag and 120 > i > 90:
+        if asse_flag and asse_da_stiro > i > 90:
 
-            if (i + misura_piega + intervallo_piega) > 120:
+            if (i + misura_piega + intervallo_piega) > asse_da_stiro:
 
                 print("\n" + "*" * 22 + "\n")
                 asse_flag = False
