@@ -1,6 +1,5 @@
 from pretyPrint import *
 
-
 def pf(list_data):
     piega_aprossimata, piega_dentro, misura_tenda, misura_stoffa = list_data
     coef = ((piega_dentro * 2) + misura_tenda)
@@ -33,11 +32,15 @@ def pf(list_data):
         print('piega\t\t', (round(i, 1)))
         i = i + intervallo_piega
         print('intervallo\t', (round(i, 1)))
-        if asse_flag and 120 > i > 110:
-            print("*" * 40)
-            asse_flag = False
-    print()
 
+        if asse_flag and 120 > i > 90:
+
+            if (i + misura_piega + intervallo_piega) > 120:
+
+                print("\n" + "*" * 22 + "\n")
+                asse_flag = False
+
+    print()
 
 
 list_ask_piega = [
