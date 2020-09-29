@@ -39,7 +39,7 @@ def pf(list_data, asse_da_stiro=121):
 
             if (i + misura_piega + intervallo_piega) > asse_da_stiro:
 
-                print("\n" + "*" * 22 + "\n")
+                printAlert("*" * 22)
                 asse_flag = False
 
     print()
