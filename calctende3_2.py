@@ -8,6 +8,7 @@ from piega_fissa import *
 from help import *
 from stoffa_piegafissa import *
 from taglio_coeficiente import *
+import preventivo
 
 
 from colorama import *
@@ -113,6 +114,8 @@ if __name__ == "__main__":
 
             elif dom == "stop":
                 print("[!] a presto!\n\n")
+            elif dom in ["preventivo", "prev"]:
+                preventivo.start()
             else:
                 print(Fore.LIGHTRED_EX)
                 print('[!] commando non trovato...\n'
