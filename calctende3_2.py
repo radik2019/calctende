@@ -9,6 +9,7 @@ from help import *
 from stoffa_piegafissa import *
 from taglio_coeficiente import *
 import preventivo
+import tenda_romana
 
 
 from colorama import *
@@ -116,6 +117,8 @@ if __name__ == "__main__":
                 print("[!] a presto!\n\n")
             elif dom in ["preventivo", "prev"]:
                 preventivo.start()
+            elif dom in ["tenda romana", "romana", "steccata", "tenda steccata"]:
+                tenda_romana.t_romana(data_input(["altezza tenda", 'fettuccia', "basso", "bacchette"]))
             else:
                 print(Fore.LIGHTRED_EX)
                 print('[!] commando non trovato...\n'

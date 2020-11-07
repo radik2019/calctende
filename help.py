@@ -27,7 +27,9 @@ def help():
 		"coef"---- divisione della stoffa per le tende da fare
 
 		"prev"---- preventivo
-		    
+
+		"steccata"- tenda romana
+
 
 
 	"""
