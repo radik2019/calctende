@@ -118,10 +118,13 @@ if __name__ == "__main__":
             elif dom in ["preventivo", "prev"]:
                 preventivo.start()
             elif dom in ["tenda romana", "romana", "steccata", "tenda steccata"]:
-                tenda_romana.t_romana(data_input(["altezza tenda", 'fettuccia', "basso", "bacchette"]))
+                print(tenda_romana.t_romana(data_input(["altezza tenda", 'fettuccia', "basso", "bacchette"])))
             else:
                 print(Fore.LIGHTRED_EX)
                 print('[!] commando non trovato...\n'
                     '[!] [ help ] per la lista dei comandi\n'
                     '[!] [ stop ] per fermare il programma')
                 print(Fore.LIGHTCYAN_EX)
+
+
+

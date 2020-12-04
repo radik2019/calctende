@@ -15,11 +15,12 @@ def t_romana(lst):
     # print(spazzi)
     n = spazzi + alto
 
-    print(n)
+    s = ""
+    s += f"{round(n, 1)}\n"
     for i in range(bacchette):
         n += spazzi
-        print(n)
-
+        s += f"{round(n, 1)}\n"
+    return s
 
 
 
