@@ -101,9 +101,8 @@ if __name__ == "__main__":
 
             elif dom in onda7:
                 
-                print(Fore.RED,"[!]",Fore.YELLOW, Fore.BLACK, Back.LIGHTRED_EX," '7 GANCI VUOTI = 14.34 cm'\n")
-                print(Back.RESET)
-                print(Fore.LIGHTGREEN_EX)
+                print(Fore.RED,"[!]",Fore.YELLOW, Fore.BLACK, Back.LIGHTRED_EX," '7 GANCI VUOTI = 14.34 cm'\n", Back.RESET, Fore.LIGHTGREEN_EX)
+
                 lstond = onda_input()
                 ond(lstond[0], lstond[1], lstond[2])
 

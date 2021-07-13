@@ -8,6 +8,22 @@ def ond(presunta_misura_bin, passo,  taschini_vuoti):
 	"""
 	calcoli per la fettuccia da 7 cm
 	"""
+	# binario singolo o doppio
+	
+
+
+	def binar():
+		tipo_binario = input("[?] binario doppio o singolo? [1 / 2]: ")
+		if tipo_binario == '2' or tipo_binario == '1':
+			return int(tipo_binario)
+		else:
+			print("[!] inserisci '1' o '2'. indica se l'apertura e' laterale o centrale")
+			binar()
+
+	flag = binar()
+	presunta_misura_bin = presunta_misura_bin / flag
+
+
 	taschini_vuoti -= 1
 	task = 52 / 29
 	task_sp = task * (taschini_vuoti + 1)
@@ -20,6 +36,7 @@ def ond(presunta_misura_bin, passo,  taschini_vuoti):
 		nonlocal coeficiente
 		nonlocal numero_nodi
 		nonlocal presunta_misura_bin
+		nonlocal flag
 		line = '_' * 48
 		binario = coeficiente * passo
 
@@ -34,12 +51,12 @@ def ond(presunta_misura_bin, passo,  taschini_vuoti):
 			misura_effettiva_binario = coeficiente * passo
 		s = (
 			f"{line}\n"
-			f"{'binario'.ljust(27, ' ')}{misura_effettiva_binario}\n"
-			f"{'ganci'.ljust(27, ' ')}{coeficiente + 1}\n"
-			f"{'stoffa'.ljust(27, ' ')}{round((coeficiente * task_sp + 15), 2)}\n"
+			f"{'binario'.ljust(27, ' ')}{misura_effettiva_binario * flag}\n"
+			f"{'ganci'.ljust(27, ' ')}{(coeficiente + 1) * flag}\n"
+			f"{'stoffa'.ljust(27, ' ')}{round(((coeficiente * task_sp + 15) * flag), 2)}\n"
 			f"{'spazio tra ganci'.ljust(27, ' ')}{round(task_sp, 2)}\n"
 			f"{'taschini vuoti'.ljust(27, ' ')}{taschini_vuoti }\n"
-			f'{"numero nodi".ljust(27, " ")}{numero_nodi}\n'
+			f'{"numero nodi".ljust(27, " ")}{numero_nodi * flag}\n'
 			f'{line}'
 			f"")
 
@@ -50,11 +67,15 @@ def ond(presunta_misura_bin, passo,  taschini_vuoti):
 		coeficiente += 2
 	else:
 		coeficiente -= 2
+	if flag == 1:
+		print("S I N G O L O".center(50, " "))
+	elif flag == 2:
+		print("D O P P I O".center(50, " "))
 	print(Fore.LIGHTYELLOW_EX, cons())
 
 	print(Fore.LIGHTYELLOW_EX, cons(0.75))
 
-	print(Fore.MAGENTA, f'nella misura della stoffa sono inclusi i 15 cm \n{40 * "*"}')
+	print(Fore.MAGENTA, f'[!] nella misura della stoffa non sono inclusi gli orli o eventuale pieghe dentro \n{40 * "*"}')
 
 
 if __name__ == "__main__":
