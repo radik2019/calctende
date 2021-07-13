@@ -7,9 +7,8 @@ module doc
 def ond(presunta_misura_bin, passo,  taschini_vuoti):
 	"""
 	calcoli per la fettuccia da 7 cm
-
 	"""
-
+	taschini_vuoti -= 1
 	task = 52 / 29
 	task_sp = task * (taschini_vuoti + 1)
 	coeficiente = (presunta_misura_bin // passo)
@@ -21,7 +20,7 @@ def ond(presunta_misura_bin, passo,  taschini_vuoti):
 		nonlocal coeficiente
 		nonlocal numero_nodi
 		nonlocal presunta_misura_bin
-		line = '_' * 40
+		line = '_' * 48
 		binario = coeficiente * passo
 
 		if nod != 0:
@@ -61,7 +60,4 @@ def ond(presunta_misura_bin, passo,  taschini_vuoti):
 if __name__ == "__main__":
 
 	ond(241, 8, 7)
-	# onda_nod2(231, 8, 6)
-	# onda_nod2(214, 8, 6)
-	# onda_nod2(187, 8, 6)
-	# onda_nod2(322, 8, 6)
+

@@ -3,6 +3,7 @@ from colorama import *
 def onda_input():
 
     def pass_func():
+        """ input per onda"""
         nonlocal passo
 
         try:

@@ -10,6 +10,7 @@ from stoffa_piegafissa import *
 from taglio_coeficiente import *
 import preventivo
 import tenda_romana
+import os
 
 
 from colorama import *
@@ -99,6 +100,10 @@ if __name__ == "__main__":
                 stoffa_per_piega_fissa(data_input(list_ask_stoffa))
 
             elif dom in onda7:
+                
+                print(Fore.RED,"[!]",Fore.YELLOW, Fore.BLACK, Back.LIGHTRED_EX," '7 GANCI VUOTI = 14.34 cm'\n")
+                print(Back.RESET)
+                print(Fore.LIGHTGREEN_EX)
                 lstond = onda_input()
                 ond(lstond[0], lstond[1], lstond[2])
 
@@ -112,13 +117,14 @@ if __name__ == "__main__":
                 list_ask_coef = input_coef()
                 coef(list_ask_coef[0], list_ask_coef[1], list_ask_coef[2])
 
-
             elif dom == "stop":
                 print("[!] a presto!\n\n")
             elif dom in ["preventivo", "prev"]:
                 preventivo.start()
             elif dom in ["tenda romana", "romana", "steccata", "tenda steccata"]:
                 tenda_romana.t_romana(data_input(["altezza tenda", 'fettuccia', "basso", "bacchette"]))
+            elif dom in ["cls", "clear", "erase"]:
+                os.system("clear")
             else:
                 print(Fore.LIGHTRED_EX)
                 print('[!] commando non trovato...\n'
