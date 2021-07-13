@@ -18,7 +18,7 @@ def ond(presunta_misura_bin, passo,  taschini_vuoti):
 			return int(tipo_binario)
 		else:
 			print("[!] inserisci '1' o '2'. indica se l'apertura e' laterale o centrale")
-			binar()
+			return binar()
 
 	flag = binar()
 	presunta_misura_bin = presunta_misura_bin / flag
@@ -41,7 +41,7 @@ def ond(presunta_misura_bin, passo,  taschini_vuoti):
 		binario = coeficiente * passo
 
 		if nod != 0:
-			print("\n\n", '*' * 15, " NODI ", '*' * 15)
+			print(" NODI ".center(50, '*'))
 			while binario < presunta_misura_bin - 1:
 				presunta_misura_bin -= nod
 				numero_nodi += 1
