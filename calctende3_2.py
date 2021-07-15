@@ -26,7 +26,6 @@ def logo():
     ║║ ╔╗╚ ╗║ ║║ ║╔═╝      ║║  ║╔╗║║╔╗╗║╔╗║
     ║╚═╝║║╚╝╚╗║╚╗║╚═╗     ╔╝╚╗ ║║═╣║║║║║╚╝║
     ╚═══╝╚═══╝╚═╝╚══╝     ╚══╝ ╚══╝╚╝╚╝╚══╝
-
     """
 
     lst2 = lst2.split("\n")
@@ -101,7 +100,7 @@ if __name__ == "__main__":
 
             elif dom in onda7:
                 
-                print(Fore.RED,"[!]",Fore.YELLOW, Fore.BLACK, Back.LIGHTRED_EX," '7 GANCI VUOTI = 14.34 cm'\n", Back.RESET, Fore.LIGHTGREEN_EX)
+                print(Fore.RED,"[!]",Fore.YELLOW, " '7 GANCI VUOTI = 14.34 cm'\n", Back.RESET, Fore.LIGHTGREEN_EX)
 
                 lstond = onda_input()
                 ond(lstond[0], lstond[1], lstond[2])
@@ -126,7 +125,7 @@ if __name__ == "__main__":
                 os.system("clear")
             else:
                 print(Fore.LIGHTRED_EX)
-                print('[!] commando non trovato...\n'
-                    '[!] [ help ] per la lista dei comandi\n'
+                print(Fore.RED + '[!]'+ Fore.LIGHTCYAN_EX + ' commando non trovato...\n'
+                    '[' + Fore.RED +'!'+Fore.LIGHTCYAN_EX+'] [ help ] per la lista dei comandi\n'
                     '[!] [ stop ] per fermare il programma')
                 print(Fore.LIGHTCYAN_EX)
