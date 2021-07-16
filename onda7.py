@@ -13,12 +13,12 @@ def ond(presunta_misura_bin, passo,  taschini_vuoti):
 
 
 	def binar():
-		tipo_binario = input("[?] binario doppio o singolo? [1 / 2]: ")
+		tipo_binario = input("[?] binario a 1 telo o 2? [1 / 2]: ")
 		if tipo_binario == '2' or tipo_binario == '1':
 			return int(tipo_binario)
 		else:
 			print("[!] inserisci '1' o '2'. indica se l'apertura e' laterale o centrale")
-			binar()
+			return binar()
 
 	flag = binar()
 	presunta_misura_bin = presunta_misura_bin / flag
@@ -39,19 +39,24 @@ def ond(presunta_misura_bin, passo,  taschini_vuoti):
 		nonlocal flag
 		line = '_' * 48
 		binario = coeficiente * passo
-
-		if nod != 0:
+		binario_iniziale = presunta_misura_bin
+		if nod > 0.0:
 			print("\n\n", '*' * 15, " NODI ", '*' * 15)
-			while binario < presunta_misura_bin - 1:
-				presunta_misura_bin -= nod
-				numero_nodi += 1
+			if binario < presunta_misura_bin:
+				while binario < presunta_misura_bin - 1:
+					presunta_misura_bin -= nod
+					numero_nodi += 1
+			elif binario > presunta_misura_bin:
+				while binario > presunta_misura_bin - 1:
+					presunta_misura_bin += nod
+					numero_nodi += 1
 
 			misura_effettiva_binario = presunta_misura_bin
 		else:
 			misura_effettiva_binario = coeficiente * passo
 		s = (
 			f"{line}\n"
-			f"{'binario'.ljust(27, ' ')}{misura_effettiva_binario * flag}\n"
+			f"{'binario'.ljust(27, ' ')}{misura_effettiva_binario * flag if nod == 0 else binario_iniziale}\n"
 			f"{'ganci'.ljust(27, ' ')}{(coeficiente + 1) * flag}\n"
 			f"{'stoffa'.ljust(27, ' ')}{round(((coeficiente * task_sp + 15) * flag), 2)}\n"
 			f"{'spazio tra ganci'.ljust(27, ' ')}{round(task_sp, 2)}\n"
@@ -80,5 +85,5 @@ def ond(presunta_misura_bin, passo,  taschini_vuoti):
 
 if __name__ == "__main__":
 
-	ond(241, 8, 7)
+	ond(251, 8, 7)
 
