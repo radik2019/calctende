@@ -12,6 +12,7 @@ def ond(presunta_misura_bin, passo,  taschini_vuoti):
 	
 
 
+	binario_iniziale = presunta_misura_bin
 	def binar():
 		tipo_binario = input("[?] binario a 1 telo o 2? [1 / 2]: ")
 		if tipo_binario == '2' or tipo_binario == '1':
@@ -37,9 +38,9 @@ def ond(presunta_misura_bin, passo,  taschini_vuoti):
 		nonlocal numero_nodi
 		nonlocal presunta_misura_bin
 		nonlocal flag
+		nonlocal binario_iniziale
 		line = '_' * 48
 		binario = coeficiente * passo
-		binario_iniziale = presunta_misura_bin
 		if nod > 0.0:
 			print("\n\n", '*' * 15, " NODI ", '*' * 15)
 			if binario < presunta_misura_bin:
