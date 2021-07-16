@@ -10,7 +10,7 @@ from stoffa_piegafissa import *
 from taglio_coeficiente import *
 import preventivo
 import tenda_romana
-import os
+import os, sys
 
 
 from colorama import *
@@ -26,7 +26,6 @@ def logo():
     ║║ ╔╗╚ ╗║ ║║ ║╔═╝      ║║  ║╔╗║║╔╗╗║╔╗║
     ║╚═╝║║╚╝╚╗║╚╗║╚═╗     ╔╝╚╗ ║║═╣║║║║║╚╝║
     ╚═══╝╚═══╝╚═╝╚══╝     ╚══╝ ╚══╝╚╝╚╝╚══╝
-
     """
 
     lst2 = lst2.split("\n")
@@ -71,6 +70,11 @@ def nastro_barra():
 
 
 if __name__ == "__main__":
+    if sys.platform == "linux":
+        CLEAR_SCREEN = "clear"
+    elif sys.platform == "win32":
+        CLEAR_SCREEN = "cls"
+        init(convert=True)
     dom = 23
     logo()
     while dom != 'stop':
@@ -101,7 +105,7 @@ if __name__ == "__main__":
 
             elif dom in onda7:
                 
-                print(Fore.RED,"[!]",Fore.YELLOW, Fore.BLACK, Back.LIGHTRED_EX," '7 GANCI VUOTI = 14.34 cm'\n", Back.RESET, Fore.LIGHTGREEN_EX)
+                print(Fore.RED + "[!]" + Fore.YELLOW + " '7 GANCI VUOTI = 14.34 cm'" + Fore.LIGHTGREEN_EX)
 
                 lstond = onda_input()
                 ond(lstond[0], lstond[1], lstond[2])
@@ -123,10 +127,10 @@ if __name__ == "__main__":
             elif dom in ["tenda romana", "romana", "steccata", "tenda steccata"]:
                 tenda_romana.t_romana(data_input(["altezza tenda", 'fettuccia', "basso", "bacchette"]))
             elif dom in ["cls", "clear", "erase"]:
-                os.system("clear")
+                os.system(CLEAR_SCREEN)
             else:
                 print(Fore.LIGHTRED_EX)
-                print('[!] commando non trovato...\n'
-                    '[!] [ help ] per la lista dei comandi\n'
+                print(Fore.RED + '[!]'+ Fore.LIGHTCYAN_EX + ' commando non trovato...\n'
+                    '[' + Fore.RED +'!'+Fore.LIGHTCYAN_EX+'] [ help ] per la lista dei comandi\n'
                     '[!] [ stop ] per fermare il programma')
                 print(Fore.LIGHTCYAN_EX)
