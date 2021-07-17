@@ -108,7 +108,7 @@ if __name__ == "__main__":
                 print(Fore.RED + "[!]" + Fore.YELLOW + " '7 GANCI VUOTI = 14.34 cm'" + Fore.LIGHTGREEN_EX)
 
                 lstond = onda_input()
-                ond(lstond[0], lstond[1], lstond[2])
+                ond(lstond[0], lstond[1], lstond[2], lstond[3])
 
             elif dom == "ptube":
                 pg(data_input(list_ask_tub))

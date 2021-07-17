@@ -1,6 +1,13 @@
 from colorama import *
 
 def onda_input():
+    def binar():
+        tipo_binario = input("[?] binario a 1 telo o 2? [1 / 2]: ")
+        if tipo_binario == '2' or tipo_binario == '1':
+            return int(tipo_binario)
+        else:
+            print("[!] inserisci '1' o '2'. indica se l'apertura e' laterale o centrale")
+            return binar()
 
     def pass_func():
         """ input per onda"""
@@ -23,7 +30,7 @@ def onda_input():
 
         while True:
             try:
-                misura_onda = int(input('[>] taschini vuoti tra ganci'.ljust(29, " "))) + 1
+                misura_onda = int(input('[>] taschini vuoti tra ganci  ' + Fore.WHITE.ljust(29, " ")))
                 if (misura_onda > 16) or (misura_onda < 2):
 
                     print(Fore.RED + "[!]" + Fore.LIGHTGREEN_EX + " numero taschini non valido!..")
@@ -60,8 +67,9 @@ def onda_input():
 
     binario = 0
     binario_func()
+    binar_type = binar()
 
-    return [binario, passo, misura_onda]
+    return [binario, passo, misura_onda, binar_type]
 
 
 def onda(binario, passo, misura_onda):
