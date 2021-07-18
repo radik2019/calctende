@@ -30,7 +30,7 @@ def onda_input():
 
         while True:
             try:
-                misura_onda = int(input('[>] taschini vuoti tra ganci  ' + Fore.WHITE.ljust(29, " ")))
+                misura_onda = int(input('[>] taschini vuoti tra ganci  '.ljust(29, " ")))
                 if (misura_onda > 16) or (misura_onda < 2):
 
                     print(Fore.RED + "[!]" + Fore.LIGHTGREEN_EX + " numero taschini non valido!..")
