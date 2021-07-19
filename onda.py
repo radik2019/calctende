@@ -2,7 +2,7 @@ from colorama import *
 
 def onda_input():
     def binar():
-        tipo_binario = input("[?] binario a 1 telo o 2? [1 / 2]: ")
+        tipo_binario = input("[>] binario a 1 telo o 2? [1 / 2]: ")
         if tipo_binario == '2' or tipo_binario == '1':
             return int(tipo_binario)
         else:
@@ -59,6 +59,18 @@ def onda_input():
             print(Fore.RED + "[!]" + Fore.LIGHTGREEN_EX +" i dati inseriti non sono validi!")
             binario_func()
 
+    def input_fettuccia():
+        tipo_fettuccia = input("[>] fettuccia da 7 cm o da 9 cm? [7 \ 9]: ")
+        if tipo_fettuccia == '7' or tipo_fettuccia == '9':
+            if tipo_fettuccia == '7':
+                return 0
+            else:
+                return 1
+            return int(tipo_fettuccia)
+        else:
+            print("[!] inserisci '7' o '9'. indica il tipo di fettuccia")
+            return input_fettuccia()                  
+
     passo = 0
     pass_func()
 
@@ -68,8 +80,9 @@ def onda_input():
     binario = 0
     binario_func()
     binar_type = binar()
+    fettuccia = input_fettuccia()
 
-    return [binario, passo, misura_onda, binar_type]
+    return [binario, passo, misura_onda, binar_type, fettuccia]
 
 
 def onda(binario, passo, misura_onda):

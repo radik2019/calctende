@@ -105,10 +105,11 @@ if __name__ == "__main__":
 
             elif dom in onda7:
                 
-                print(Fore.RED + "[!]" + Fore.YELLOW + " '7 GANCI VUOTI = 14.34 cm'" + Fore.LIGHTGREEN_EX)
+                print(Fore.RED + "[!]" + Fore.YELLOW + " '7 GANCI VUOTI = 14.34 cm con la fettuccia da 7 cm" + Fore.LIGHTGREEN_EX)
+                print(Fore.RED + "[!]" + Fore.YELLOW + " '3 GANCI VUOTI = 14.46 cm con la fettuccia da 9 cm" + Fore.LIGHTGREEN_EX)
 
                 lstond = onda_input()
-                ond(lstond[0], lstond[1], lstond[2], lstond[3])
+                ond(lstond[0], lstond[1], lstond[2], lstond[3], lstond[4])
 
             elif dom == "ptube":
                 pg(data_input(list_ask_tub))
