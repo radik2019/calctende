@@ -30,11 +30,6 @@ def json_read(file):
 
 
 def read_proportion(flag: int = 0 )->list:
-    
-    def wr():
-        with open("fettuccia_onda.txt", "w") as dg:
-            dg.write("fettuccia da sette cm  52     29\nfettuccia da nove cm   126.5  35")
-        
     """scelta del tipo di fettuccia"""
     lst = os.listdir()
 
@@ -59,25 +54,13 @@ def read_proportion(flag: int = 0 )->list:
             data = df.read()
         numb = data.split('\n')
         numb = [re.findall(r"\d+\.\d+|\d+\,\d+|\d+", i) for i in numb]
-        
         numb = [[float(k) for k in i] for i in numb]
-        if len(numb) != 2:
-            wr()
-            return read_proportion(flag)
-        elif (len(numb[0]) != 2) or (len(numb[1]) != 2):
-            wr()
-            return read_proportion(flag)
         return numb[flag]
     else:
-<<<<<<< HEAD
         with open("fettuccia_onda.txt", "w") as dg:
             dg.write("52  29 \n 126.5  35")
         read_proportion()"""
 
-=======
-        wr()
-        return read_proportion(flag)
->>>>>>> 5c8e8ae51c8b733647393221ddf0ad67dea844ef
 
 def binar():
     tipo_binario = input("[?] binario a 1 telo o 2? [1 / 2]: ")
@@ -206,11 +189,7 @@ def ond(presunta_misura_bin, passo,  taschini_vuoti, binary_type, fettuccia):
     return
 
 if __name__ == "__main__":
-<<<<<<< HEAD
     ond(298, 8, 7, 1, 0)
-=======
-    ond(128, 8, 7, 1, 0)
->>>>>>> 5c8e8ae51c8b733647393221ddf0ad67dea844ef
     ond(298, 8, 7, 2, 0)
     print()
 
