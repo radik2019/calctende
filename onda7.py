@@ -1,7 +1,7 @@
 
 from colorama import *
 import os
-import re, sys
+import sys, json
 
 LARGE = 40
 LINE = Fore.RED + ('_' * LARGE) + Fore.LIGHTYELLOW_EX +'\n' 
@@ -9,9 +9,40 @@ LINE = Fore.RED + ('_' * LARGE) + Fore.LIGHTYELLOW_EX +'\n'
 module doc
 """
 
+dct = {
+    "onda": [[52, 29], [126.5, 35]],
+    "prezzo_onda":20,
+    "prezzo_piegafissa":20,
+    "arriccia_tenda": 14,
+    "orli": 5,
+}
+
+
+def json_write(file, data):
+    with open(file, "w") as write_file:
+        json.dump(data, write_file)
+
+
+def json_read(file):
+    with open(file, "r") as read_file:
+        data = json.load(read_file)
+    return data
+
 
 def read_proportion(flag: int = 0 )->list:
     """scelta del tipo di fettuccia"""
+    lst = os.listdir()
+
+    if "setup_data.json" in lst:
+        numb = json_read("setup_data.json")
+        return numb['onda'][flag]
+    else:
+        json_write("setup_data.json", dct)
+        read_proportion(flag)
+
+"""
+def read_proportion(flag: int = 0 )->list:
+
     lst = os.listdir()
     if sys.platform == "linux":
         CLEAR_SCREEN = "clear"
@@ -28,7 +59,7 @@ def read_proportion(flag: int = 0 )->list:
     else:
         with open("fettuccia_onda.txt", "w") as dg:
             dg.write("52  29 \n 126.5  35")
-        read_proportion()
+        read_proportion()"""
 
 
 def binar():
@@ -104,13 +135,28 @@ def calcolo_ond(presunta_misura_bin,
     return final_result
 
 
-def print_ond(mis_ef, stoff, spaz_ganc, nodi, ganci):
+def print_ond(mis_ef, stoff, spaz_ganc, nodi, ganci, binary_type):
+    dct = json_read("setup_data.json")
+    prezzo = (dct["prezzo_onda"] * (stoff /100))
+    
+#   "onda": [[52, 29], [126.5, 35]],
+#     "prezzo_onda":20,
+#     "prezzo_piegafissa":20,
+#     "arriccia_tenda": 14,
+#     "orli": 5,
+# }
+    if binary_type == 2:
+        prezzo += (dct["orli"] * 4)
+    if binary_type == 1:
+        prezzo += (dct["orli"] * 2)
+
     s = (
         Fore.LIGHTYELLOW_EX + f"{LINE}\n"
         f"{'binario'.ljust(27, ' ')}{mis_ef}\n"
         f"{'stoffa'.ljust(27, ' ')}{stoff}\n"
         f"{'numero ganci'.ljust(27, ' ')}{ganci}\n"
         f"{'spazio tra ganci'.ljust(27, ' ')}{spaz_ganc}\n"
+        f"{'costo'.ljust(27, ' ')}{round(prezzo, 2)} euro\n"
         )
     s= s + f'{"numero nodi".ljust(27, " ")}{nodi}\n' if nodi > 0 else s
     s = s + LINE
@@ -133,17 +179,18 @@ def ond(presunta_misura_bin, passo,  taschini_vuoti, binary_type, fettuccia):
         passo, taschini_vuoti, binary_type, "node", fettuccia)
     print("S I N G O L O".center(LARGE, " ") if binary_type == 1 else "D O P P I O".center(LARGE, " "))
     if misura_effettiva_binario1 == presunta_misura_bin:
-        print_ond(misura_effettiva_binario1, stoffa1, spazio_tra_ganci1, nodi1, ganci1)
+        print_ond(misura_effettiva_binario1, stoffa1, spazio_tra_ganci1, nodi1, ganci1, binary_type)
     else:	
-        print_ond(misura_effettiva_binario1, stoffa1, spazio_tra_ganci1, nodi1, ganci1)
-        print_ond(misura_effettiva_binario2, stoffa2, spazio_tra_ganci2, nodi2, ganci2)
+        print_ond(misura_effettiva_binario1, stoffa1, spazio_tra_ganci1, nodi1, ganci1, binary_type)
+        print_ond(misura_effettiva_binario2, stoffa2, spazio_tra_ganci2, nodi2, ganci2, binary_type)
         print("  N O D I  ".center(LARGE, "*"))
-        print_ond(misura_effettiva_binario3, stoffa3, spazio_tra_ganci3, nodi3, ganci3)
+        print_ond(misura_effettiva_binario3, stoffa3, spazio_tra_ganci3, nodi3, ganci3, binary_type)
+        print("[!] nel prezzo sono inclusi gli orli")
     return
 
 if __name__ == "__main__":
-    ond(128, 8, 7, 1)
-    ond(298, 8, 7, 2)
+    ond(298, 8, 7, 1, 0)
+    ond(298, 8, 7, 2, 0)
     print()
 
 
