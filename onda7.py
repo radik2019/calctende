@@ -2,31 +2,13 @@
 from colorama import *
 import os
 import sys, json
+from setup_data import *
 
 LARGE = 40
 LINE = Fore.RED + ('_' * LARGE) + Fore.LIGHTYELLOW_EX +'\n' 
 """
 module doc
 """
-
-dct = {
-    "onda": [[52, 29], [126.5, 35]],
-    "prezzo_onda":20,
-    "prezzo_piegafissa":20,
-    "arriccia_tenda": 14,
-    "orli": 5,
-}
-
-
-def json_write(file, data):
-    with open(file, "w") as write_file:
-        json.dump(data, write_file)
-
-
-def json_read(file):
-    with open(file, "r") as read_file:
-        data = json.load(read_file)
-    return data
 
 
 def read_proportion(flag: int = 0 )->list:
@@ -39,27 +21,6 @@ def read_proportion(flag: int = 0 )->list:
     else:
         json_write("setup_data.json", dct)
         read_proportion(flag)
-
-"""
-def read_proportion(flag: int = 0 )->list:
-
-    lst = os.listdir()
-    if sys.platform == "linux":
-        CLEAR_SCREEN = "clear"
-    elif sys.platform == "win32":
-        CLEAR_SCREEN = "cls"
-        init(convert=True)
-    if "fettuccia_onda.txt" in lst:
-        with open("fettuccia_onda.txt", "r") as df:
-            data = df.read()
-        numb = data.split('\n')
-        numb = [re.findall(r"\d+\.\d+|\d+\,\d+|\d+", i) for i in numb]
-        numb = [[float(k) for k in i] for i in numb]
-        return numb[flag]
-    else:
-        with open("fettuccia_onda.txt", "w") as dg:
-            dg.write("52  29 \n 126.5  35")
-        read_proportion()"""
 
 
 def binar():

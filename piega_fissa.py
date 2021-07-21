@@ -1,4 +1,5 @@
 from pretyPrint import *
+from setup_data import *
 
 
 def pf(list_data, asse_da_stiro=121):
@@ -42,7 +43,9 @@ def pf(list_data, asse_da_stiro=121):
                 printAlert("*" * 22)
                 asse_flag = False
 
-    print()
+    dct = json_read("setup_data.json")
+    prezzo = dct["prezzo_piegafissa"] * (misura_stoffa / 100) + (dct["orli"] * 2)
+    print(Fore.RED + "[!]" + Fore.LIGHTYELLOW_EX + f"{' prezzo inclusi gli orli  '}{prezzo}")
 
 
 list_ask_piega = [
