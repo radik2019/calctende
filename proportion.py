@@ -40,15 +40,14 @@ def prop():
                 if a < sum(k) <= n:
                     a = sum(k)
                     ls = k
-                else:
-                    pass
         return ls
 
     def choice_list(sottopezzi, pezzi, index_n):
 
         for piece in pezzi:
-            lst.append(prop_n(sottopezzi, piece))
-            sum_list.append(piece - sum(prop_n(sottopezzi, piece)))
+            comb = prop_n(sottopezzi, piece)
+            lst.append(comb)
+            sum_list.append(piece - sum(comb))
         # print(sum_list)
         ind = sum_list.index(min(sum_list))
 
@@ -76,9 +75,12 @@ def prop():
             resti.append(round(float(i[3:]) - sum(df[i]), 2))
 
     print('_' * 50)
-    # print(f'manca materiale per: {sottopezzi}')
-    print(f'avanzano pezzi:        {resti}')
-    print(f'interi avanzati        {pezzi}')
+    if len(sottopezzi) != 0:
+        print(f'manca materiale per: {sottopezzi}')
+    if len(resti) != 0:
+        print(f'avanzano pezzi:        {resti}')
+    if len(pezzi) != 0:
+        print(f'interi avanzati        {pezzi}')
     return ' '
 
 
