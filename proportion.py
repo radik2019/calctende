@@ -8,14 +8,29 @@ from re import sub
 # 128 231
 
 
-def prop():
-
-    def string_to_list(num_expression):
-        s = sub(",", ".", num_expression)
+def string_to_list(nm):
+    
+    if '(' in nm:
+        start = nm.index('(')
+        stop = nm.index(')')
+        subs = nm[start+1:stop]
+        nm = nm[:start] + nm[stop+1:]
+        s = sub(",", ".", subs)
         patern = r"\d+\.\d+|\d+\,\d+|\d+"
         s = findall(patern, s)
-        return list(map(lambda x: float(x), s))
+        #print(nm)
+        subs = (s[0] + ' ') * int(s[1])
+        return string_to_list(nm + ' '+ subs)
+         
+        
+    s = sub(",", ".", nm)
+    patern = r"\d+\.\d+|\d+\,\d+|\d+"
+    s = findall(patern, s)
+    return list(map(lambda x: float(x), s))
 
+
+def prop():
+    
     def prop_n(lst2, n):
         a = 0
         ls = []
@@ -58,10 +73,19 @@ def prop():
         # print(f'{i} -- {df[i]}\nresto -- {i - sum(df[i])}')
         print(f'{i} -- {sum(df[i])} = {df[i]}')
         if (float(i[3:]) - sum(df[i])) != 0:
-            resti.append(float(i[3:]) - sum(df[i]))
+            resti.append(round(float(i[3:]) - sum(df[i]), 2))
 
     print('_' * 50)
-    print(f'manca materiale per: {sottopezzi}')
-    print(f'avanzano:            {resti}')
-    # print(f'sono avanzati        {sum(pezzi)}')
+    # print(f'manca materiale per: {sottopezzi}')
+    print(f'avanzano pezzi:        {resti}')
+    print(f'interi avanzati        {pezzi}')
     return ' '
+
+
+if __name__ == "__main__":
+    prop()
+    
+
+
+
+

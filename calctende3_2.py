@@ -16,16 +16,17 @@ import os, sys
 from colorama import *
 
 from pretyPrint import *
+alert = f'[{chr(10071)}]'
 
 
 def logo():
     lst2 = """
-    ╔═══╗     ╔╗         ╔════╗          ╔╗
-    ║╔═╗║     ║║         ║╔╗╔╗║          ║║
-    ║║ ╚╝╔══╗ ║║ ╔══╗    ╚╝║║╚╝╔══╗╔═╗ ╔═╝║
-    ║║ ╔╗╚ ╗║ ║║ ║╔═╝      ║║  ║╔╗║║╔╗╗║╔╗║
-    ║╚═╝║║╚╝╚╗║╚╗║╚═╗     ╔╝╚╗ ║║═╣║║║║║╚╝║
-    ╚═══╝╚═══╝╚═╝╚══╝     ╚══╝ ╚══╝╚╝╚╝╚══╝
+╔═══╗     ╔╗        ╔════╗           ╔╗
+║╔═╗║     ║║        ║╔╗╔╗║           ║║
+║║ ╚╝╔══╗ ║║ ╔══╗ ╚╝║║╚╝╔══╗╔═╗ ╔═╝║
+║║ ╔╗╚ ╗║ ║║ ║╔═╝    ║║  ║╔╗║║╔╗╗║╔╗║
+║╚═╝║║╚╝╚╗║╚╗║╚═╗  ╔╝╚╗ ║║═╣║║║║║╚╝║
+╚═══╝╚═══╝╚═╝╚══╝  ╚══╝ ╚══╝╚╝╚╝╚══╝
     """
 
     lst2 = lst2.split("\n")
@@ -130,8 +131,8 @@ if __name__ == "__main__":
             elif dom in ["cls", "clear", "erase"]:
                 os.system(CLEAR_SCREEN)
             else:
-                print(Fore.LIGHTRED_EX)
-                print(Fore.RED + '[!]'+ Fore.LIGHTCYAN_EX + ' commando non trovato...\n'
-                    '[' + Fore.RED +'!'+Fore.LIGHTCYAN_EX+'] [ help ] per la lista dei comandi\n'
-                    '[!] [ stop ] per fermare il programma')
+                #print(Fore.LIGHTRED_EX)
+                print(alert + ' commando non trovato...\n'
+                    f'{alert} [ help ] per la lista dei comandi\n'
+                    '[' + chr(10071) + '] [ stop ] per fermare il programma')
                 print(Fore.LIGHTCYAN_EX)
