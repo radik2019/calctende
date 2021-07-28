@@ -1,11 +1,10 @@
 
 from itertools import combinations
-
+from colorama import *
 from re import findall
 from re import sub
 
-# 23,4 34,5 45.56 23.34 12,21 23 19
-# 128 231
+line = Fore.RED + 50 * "_" + Fore.LIGHTYELLOW_EX
 
 
 def string_to_list(nm):
@@ -18,11 +17,8 @@ def string_to_list(nm):
         s = sub(",", ".", subs)
         patern = r"\d+\.\d+|\d+\,\d+|\d+"
         s = findall(patern, s)
-        #print(nm)
         subs = (s[0] + ' ') * int(s[1])
         return string_to_list(nm + ' '+ subs)
-         
-        
     s = sub(",", ".", nm)
     patern = r"\d+\.\d+|\d+\,\d+|\d+"
     s = findall(patern, s)
@@ -48,7 +44,6 @@ def prop():
             comb = prop_n(sottopezzi, piece)
             lst.append(comb)
             sum_list.append(piece - sum(comb))
-        # print(sum_list)
         ind = sum_list.index(min(sum_list))
 
         df[f'{index_n}) {pezzi.pop(ind)}'] = lst[ind]
@@ -68,19 +63,19 @@ def prop():
         index_n += 1
     resti = []
     for i in df:
-        print('_' * 50)
-        # print(f'{i} -- {df[i]}\nresto -- {i - sum(df[i])}')
+        print(Style.BRIGHT+line)
+
         print(f'{i} -- {sum(df[i])} = {df[i]}')
         if (float(i[3:]) - sum(df[i])) != 0:
             resti.append(round(float(i[3:]) - sum(df[i]), 2))
 
-    print('_' * 50)
+    print(line)
     if len(sottopezzi) != 0:
-        print(f'manca materiale per: {sottopezzi}')
+        print(Fore.LIGHTRED_EX + f'manca materiale per:' +Fore.LIGHTWHITE_EX+ f' {sottopezzi}')
     if len(resti) != 0:
-        print(f'avanzano pezzi:        {resti}')
+        print(Fore.LIGHTRED_EX + f'avanzano pezzi:' +Fore.LIGHTWHITE_EX+ f'        {resti}')
     if len(pezzi) != 0:
-        print(f'interi avanzati        {pezzi}')
+        print(Fore.LIGHTRED_EX + f'interi avanzati ' +Fore.LIGHTWHITE_EX+ f'       {pezzi}')
     return ' '
 
 
