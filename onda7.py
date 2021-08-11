@@ -100,12 +100,6 @@ def print_ond(mis_ef, stoff, spaz_ganc, nodi, ganci, binary_type):
     dct = json_read("setup_data.json")
     prezzo = (dct["prezzo_onda"] * (stoff /100))
     
-#   "onda": [[52, 29], [126.5, 35]],
-#     "prezzo_onda":20,
-#     "prezzo_piegafissa":20,
-#     "arriccia_tenda": 14,
-#     "orli": 5,
-# }
     if binary_type == 2:
         prezzo += (dct["orli"] * 4)
     if binary_type == 1:

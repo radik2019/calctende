@@ -71,11 +71,11 @@ def prop():
 
     print(line)
     if len(sottopezzi) != 0:
-        print(Fore.LIGHTRED_EX + f'manca materiale per:' +Fore.LIGHTWHITE_EX+ f' {sottopezzi}')
+        print(Fore.LIGHTRED_EX + f'manca materiale per:' + Fore.LIGHTWHITE_EX+ f' {sottopezzi}')
     if len(resti) != 0:
-        print(Fore.LIGHTRED_EX + f'avanzano pezzi:' +Fore.LIGHTWHITE_EX+ f'        {resti}')
+        print(Fore.LIGHTRED_EX + f'avanzano pezzi:' + Fore.LIGHTWHITE_EX+ f'        {resti}')
     if len(pezzi) != 0:
-        print(Fore.LIGHTRED_EX + f'interi avanzati ' +Fore.LIGHTWHITE_EX+ f'       {pezzi}')
+        print(Fore.LIGHTRED_EX + f'interi avanzati ' + Fore.LIGHTWHITE_EX+ f'       {pezzi}')
     return ' '
 
 

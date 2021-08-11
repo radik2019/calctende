@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 
 import time
 from onda import *
@@ -16,6 +18,7 @@ import os, sys
 from colorama import *
 
 from pretyPrint import *
+print(Style.BRIGHT)
 alert = f'[{chr(10071)}]'
 
 
@@ -33,7 +36,7 @@ def logo():
 
     for i in lst2:
         print(Fore.CYAN, i)
-        time.sleep(0.07)
+        time.sleep(0.04)
 
 
 def data_input(list_ask):
@@ -83,7 +86,7 @@ if __name__ == "__main__":
         st_piega = ['stp', 'stoffa per piega fissa']
         proporzioni = ['prop', 'proporzioni']
         ondal = ['tende a onda', 'onda']
-        onda7 = ['onda7', 'onda 7cm', 'fettuccia 7 cm']
+        onda7 = ['onda', 'onda7', 'onda 7cm', 'fettuccia 7 cm']
         nastr = ['nastro', 'nastro_barra', 'nastrobarra', 'nastro barra']
         dom = 23
         while dom != 'stop':
@@ -92,11 +95,6 @@ if __name__ == "__main__":
             print(Fore.LIGHTGREEN_EX)
             if dom in tendel:
                 pf(data_input(list_ask_piega))
-
-            elif dom in ondal:
-                lstonda = onda_input()
-                onda(lstonda[0], lstonda[1], lstonda[2])
-
             elif dom in nastr:
                 nastro_barra()
             elif dom in proporzioni:
