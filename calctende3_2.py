@@ -89,6 +89,7 @@ if __name__ == "__main__":
         onda7 = ['onda', 'onda7', 'onda 7cm', 'fettuccia 7 cm']
         nastr = ['nastro', 'nastro_barra', 'nastrobarra', 'nastro barra']
         dom = 23
+        os.system(CLEAR_SCREEN)
         while dom != 'stop':
             print(Fore.LIGHTCYAN_EX)
             dom = input('[>]\t').lower()
