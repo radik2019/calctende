@@ -13,22 +13,22 @@ def input_data():
 	global fact
 
 	fact["Prezzo"].append(float(input("Prezzo unitario: ")))
-	fact["pezzi"].append(int(float(input("numero pezzi:    "))))
-	fact["sconto"].append(float(input("sconto:          ")))
-	tota = fact["pezzi"][-1] * fact["Prezzo"][-1]
+	fact["Nr. pezzi"].append(int(float(input("numero pezzi:    "))))
+	fact["Sconto in %"].append(float(input("sconto:          ")))
+	tota = fact["Nr. pezzi"][-1] * fact["Prezzo"][-1]
 
-	fact['pieno'].append(tota)
-	tot_sc = prezzo_scontato(fact['pieno'][-1], fact["sconto"][-1])
+	fact['Prezzo pieno'].append(tota)
+	tot_sc = round(prezzo_scontato(fact['Prezzo pieno'][-1], fact["Sconto in %"][-1]), 2)
 
-	fact["scontato"].append(tot_sc)
+	fact["Prezzo scontato"].append(tot_sc)
 
 
 fact = {
     'Prezzo': [],
-    'pezzi': [],
-    'sconto': [],
-    'pieno': [],
-    'scontato': []
+    'Nr. pezzi': [],
+    'Sconto in %': [],
+    'Prezzo pieno': [],
+    'Prezzo scontato': []
 }
 
 
@@ -45,8 +45,8 @@ def start():
 	df = pd.DataFrame(fact)
 	print("-" * 48)
 	print(df)
-	print("totale ========= ",sum(fact["pieno"]))
-	print("totale scontato =", sum(fact["scontato"]))
+	print("totale ========= ",round(sum(fact["Prezzo pieno"]), 2))
+	print("totale scontato =", round(sum(fact["Prezzo scontato"]), 2))
 	df.to_csv('preventivo.csv')
 
 

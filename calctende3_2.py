@@ -80,16 +80,16 @@ if __name__ == "__main__":
         CLEAR_SCREEN = "cls"
         init(convert=True)
     dom = 23
+    os.system(CLEAR_SCREEN)
     logo()
     while dom != 'stop':
         tendel = ['piega fissa', 'piega']
         st_piega = ['stp', 'stoffa per piega fissa']
         proporzioni = ['prop', 'proporzioni']
         ondal = ['tende a onda', 'onda']
-        onda7 = ['onda', 'onda7', 'onda 7cm', 'fettuccia 7 cm']
+        onda7 = ['onda', 'onda7', 'onda 7cm', 'fettuccia 7 cm', 'tende a onda', 'onda']
         nastr = ['nastro', 'nastro_barra', 'nastrobarra', 'nastro barra']
         dom = 23
-        os.system(CLEAR_SCREEN)
         while dom != 'stop':
             print(Fore.LIGHTCYAN_EX)
             dom = input('[>]\t').lower()

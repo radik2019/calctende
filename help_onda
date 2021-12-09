@@ -1,0 +1,43 @@
+[!] '7 GANCI VUOTI = 14.34 cm con la fettuccia da 7 cm
+[!] '3 GANCI VUOTI = 14.46 cm con la fettuccia da 9 cm
+[>] passo "8" o "6           8
+[>] taschini vuoti tra ganci  5
+[>] misura del binario       456
+[>] binario a 1 telo o 2? [1 / 2]: 3
+[!] inserisci '1' o '2'. indica se l'apertura e' laterale o centrale
+[>] binario a 1 telo o 2? [1 / 2]: 2
+[>] fettuccia da 7 cm o da 9 cm? [7 \ 9]: 7
+________________________________________
+
+              D O P P I O               <------- Tipo di tenda
+________________________________________
+
+binario                    432.0   <-------------Quanto deve essere largo il binario
+stoffa                     610.96  <-------------La misura della stoffa
+numero ganci               56.0
+spazio tra ganci           10.76
+costo                      142.19 euro
+________________________________________
+
+________________________________________
+
+binario                    464.0
+stoffa                     654.0
+numero ganci               60.0
+spazio tra ganci           10.76
+costo                      150.8 euro
+________________________________________
+
+**************  N O D I  *************** -\
+________________________________________   \
+                                            \
+binario                    456.0             |
+stoffa                     654.0             |
+numero ganci               60.0              | <--nel caso si volesse fare su misura , 
+spazio tra ganci           10.76             |     il programma ti indica quanti nodi dovresti
+costo                      150.8 euro        |     fare approssimativamente
+numero nodi                5                /
+________________________________________   /
+                                         _/
+[!] nel prezzo sono inclusi gli orli
+
