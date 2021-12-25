@@ -95,7 +95,11 @@ if __name__ == "__main__":
             dom = input('[>]\t').lower()
             print(Fore.LIGHTGREEN_EX)
             if dom in tendel:
-                pf(data_input(list_ask_piega))
+
+                lst = data_input(list_ask_piega)
+
+                PiegaFissa(lst[0], lst[1], lst[2], lst[3]).printMisure()
+
             elif dom in nastr:
                 nastro_barra()
             elif dom in proporzioni:
