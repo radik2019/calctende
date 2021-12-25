@@ -38,19 +38,36 @@ def logo():
         print(Fore.CYAN, i)
         time.sleep(0.04)
 
-
 def data_input(list_ask):
     def list_of_measures(s):
         try:
-            question = float(input(s.ljust(22, ' ')))
+            question = input(s.ljust(22, ' '))
+            if question.lower() == "stop":
+                return None
+            question = float(question)
             return question
         except ValueError:
             print("[!] i dati inseriti non sono validi!")
             return list_of_measures(s)
     list_mis = []
     for ask in list_ask:
-        list_mis.append(list_of_measures(ask))
+        data = list_of_measures(ask)
+        if not data:
+            return None
+        list_mis.append(data)
     return list_mis
+# def data_input(list_ask):
+#     def list_of_measures(s):
+#         try:
+#             question = float(input(s.ljust(22, ' ')))
+#             return question
+#         except ValueError:
+#             print("[!] i dati inseriti non sono validi!")
+#             return list_of_measures(s)
+#     list_mis = []
+#     for ask in list_ask:
+#         list_mis.append(list_of_measures(ask))
+#     return list_mis
 
 
 def nastro_barra():
@@ -83,7 +100,7 @@ if __name__ == "__main__":
     os.system(CLEAR_SCREEN)
     logo()
     while dom != 'stop':
-        tendel = ['piega fissa', 'piega']
+        lista_piega_fissa = ['piega fissa', 'piega']
         st_piega = ['stp', 'stoffa per piega fissa']
         proporzioni = ['prop', 'proporzioni']
         ondal = ['tende a onda', 'onda']
@@ -94,11 +111,13 @@ if __name__ == "__main__":
             print(Fore.LIGHTCYAN_EX)
             dom = input('[>]\t').lower()
             print(Fore.LIGHTGREEN_EX)
-            if dom in tendel:
+            if dom in lista_piega_fissa:
 
                 lst = data_input(list_ask_piega)
-
-                PiegaFissa(lst[0], lst[1], lst[2], lst[3]).printMisure()
+                if not lst:
+                    pass
+                else:
+                    PiegaFissa(lst[0], lst[1], lst[2], lst[3]).printMisure()
 
             elif dom in nastr:
                 nastro_barra()

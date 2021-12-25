@@ -21,7 +21,7 @@ class PiegaFissa(DataInput):
         self.m_dentro = m_dentro
         self.misura_tenda = misura_tenda
         self.misura_stoffa = misura_stoffa
-        # self.coeficiente = ((self.m_dentro * 2) + self.misura_tenda)
+        # self.coeficiente = ((self.m_dentro * 2) + self.misura_tenda)      
         self.listaMisurePronte = []
         self.asseDaStiroMisure = None
         # return -> (misura piega, numero di pieghe)

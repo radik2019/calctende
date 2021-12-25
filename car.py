@@ -1,81 +1,48 @@
-<<<<<<< HEAD
-=======
 
 
 import time
 import random
-class Employe:
-    USERS = 0
-    def __new__(cls, *args):
-        cls.USERS += 1
-        print(f"aggiunta un instanza {cls.__name__} e sono rimasti {cls.USERS}")
-        return object.__new__(cls)
-    def __del__(self):
-        self.__class__.USERS -= 1
-        print(f'e stato eliminata l`instanza {self.__class__.__name__} sono rimaste {self.__class__.USERS}')
-    def pull(self):
-
-        self.weight += random.randint(3, 40)
-
-        
-class Camionista(Employe):
-    
-    @classmethod
-    def gas(cls):
-        print(f"  {cls.__name__}  sto corendo!")
-        
-class Smorzo:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-        
-    @classmethod
-    def gas(cls):
-        print(f"chiamo dalla classe {cls.__name__}")
-    
-    
-class Cartongessista(Smorzo, Camionista):
-    def __init__(self, weight, number, x, y):
-        super().__init__(x, y)
-        self.weight = weight
-        self.number = number
-        
-    def work(self):
-        return ("monta il cartongesso")
-        
-    def pop(self) -> None:
-        self.number += random.randint(3, 40)
-        
-    def run(self):
-        if self.weight == self.number:
-            super().gas()
-            self.number += 5
-        if self.weight < self.number:
-            self.pull()
-            print("*  pulled")
-        else:
-            self.pop()
-            print(" poped")
-#         print("   ", self.weight, self.number)
-        
 
 
+class Input:
+    def __init__(self):
+        self.f = 'sono la funzione f'
+        self.s = 'sono la funzione s'
+    def get_data(self):
+        if self.__class__.__name__ == "First":
+            return self.f
+        elif self.__class__.__name__ == "Second":
+            return self.s
 
-df = Cartongessista(23, 45, 5, 8)
+class First(Input):
+    pass
 
-df1 = Cartongessista(23, 45, 5, 8)
-cm = Camionista()
-cm2 = Camionista()
-del df1
-df2 = Cartongessista(23, 45, 5, 8)
-cm3 = Camionista()
+class Second(Input):
+    pass
 
-cm4 = Camionista()
-df3 = Cartongessista(23, 45, 5, 8)
-cm5 = Camionista()
-df4 = Cartongessista(23, 45, 5, 8)
+# nm = First()
+# nm2 = Second()
 
-print(df4.USERS)
-print(cm4.USERS)
+# print(nm.get_data())
+# print(nm2.get_data())
 
->>>>>>> origin/NewOOP
+def data_input(list_ask):
+    def list_of_measures(s):
+        try:
+            question = input(s.ljust(22, ' '))
+            if question.lower() == "stop":
+                return None
+            question = float(question)
+            return question
+        except ValueError:
+            print("[!] i dati inseriti non sono validi!")
+            return list_of_measures(s)
+    list_mis = []
+    for ask in list_ask:
+        data = list_of_measures(ask)
+        if not data:
+            return None
+        list_mis.append(data)
+    return list_mis
+
+
