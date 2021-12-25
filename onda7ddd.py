@@ -1,34 +1,61 @@
 
+class Integer:
 
-def ond( presunta_misura_bin, passo,  taschini_vuoti):
-    """
-	calcoli per la fettuccia da 7 cm
-	:return:
-	"""
-    taschini_vuoti -= 1
+    @classmethod
+    def type_checker(cls, value):
+        if type(value) != int:
+            raise TypeError(" Deve essere un integer")
 
-    task = 52 / 29
-    task_sp = task * (taschini_vuoti + 1)
-    bin = (presunta_misura_bin // passo)
-    if bin % 2 == 0:
-        bin += 1
+    def __set_name__(self, owner, name):
+        print("__set_name__")
+        self.name = '_' + name
+    def __get__(self, instance, owner):
+        print("__get__")
+        return instance.__dict[self.name]
+    def __set__(self, instance, value):
+        print("__set__")
+        instance.__dict__[self.name] = value
 
-    def cons():
-        print(
-            f"{'_' * 40}\n"
-            f"{'binario'.ljust(27, ' ')}{bin * passo}\n"
-            f"{'ganci'.ljust(27, ' ')}{bin + 1}\n"
-            f"{'stoffa'.ljust(27, ' ')}{round((bin * task_sp + 15), 2)}\n"
-            f"{'coeficiente'.ljust(27, ' ')}{round((task_sp), 2)}\n{'_' * 40}"
-            f""
-        )
 
-    cons()
-    if bin * passo < presunta_misura_bin:
-        bin += 2
-    else:
-        bin -= 2
-    cons()
-    print(f'nella misura della stoffa sono inclusi i 15 cm \n{40 * "*"}\n'
-          f"{'taschini vuoti'.ljust(27, ' ')}{taschini_vuoti}"
-          )
+class Rectangle:
+    
+    def __repr__(self):
+        s = f'altezza         = {self.h}\n'\
+        f'lato corto      = {self.c_corto}\n'\
+        f'lato lungo      = {self.c_lungo}\n'\
+        f'ipotenusa corta = {self.ipotenusa_corta}\n'\
+        f'ipotenusa lunga = {self.ipotenusa_lunga}\n'
+        return s
+    
+    def __init__(self, h, c_corto, c_lungo):
+        self.h = h
+        self.c_corto = c_corto
+        self.c_lungo = c_lungo
+        self.ipotenusa_corta = self.pitagora(self.h, self.c_corto)
+        self.ipotenusa_lunga = self.pitagora(self.h, self.c_lungo)
+    
+    @staticmethod
+    def pitagora(cateta1, cateta2):
+        return (cateta1 ** 2 + cateta2 ** 2) ** 0.5
+    
+    @staticmethod
+    def percentage(intero, percentuale):
+        if  percentuale > intero:
+            return (percentuale * 100 / intero) - 100
+        else:
+            return percentuale * 100 / intero
+        
+    def due_ipotenuse(self):
+        return self.pitagora(self.h, self.c_corto), self.pitagora(self.h, self.c_lungo)
+    
+    def increment_percent(self, incr):
+        self.h += incr
+        ipc, ipl = self.due_ipotenuse()
+        print(f"{round(self.percentage(self.ipotenusa_corta, ipc), 7)}".ljust( 14, " "), end="")
+        print(f"{round(self.percentage(self.ipotenusa_lunga, ipl), 7)}".ljust( 14, " "))
+        self.ipotenusa_lunga = ipl
+        self.ipotenusa_corta = ipc
+
+
+
+
