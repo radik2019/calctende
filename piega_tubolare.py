@@ -11,6 +11,21 @@ piega tubolare
 """
 
 
+class PiegaTubolare:
+    def __init__(self, m_tend=None, m_stoff=None, piega=None, piega_den=None, space=None):
+        if all((m_tend, m_stoff, piega, piega_den, space)):
+            self.m_tend = m_tend
+            self.m_stoff = m_stoff
+            self.piega = piega
+            self.piega_den = piega_den
+            self.space = space
+        else:
+            self.readyToInput = self.data_input()
+            self.m_tend, self.m_stoff,self.piega, self.piega_den, self.space = self.readyToInput
+
+
+
+
 def pg(lst):
     m_tend, m_stoff, piega, piega_den, space = lst
 

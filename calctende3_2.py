@@ -14,10 +14,10 @@ import preventivo
 import tenda_romana
 import os, sys
 
-
 from colorama import *
 
 from pretyPrint import *
+
 print(Style.BRIGHT)
 alert = f'[{chr(10071)}]'
 
@@ -38,6 +38,7 @@ def logo():
         print(Fore.CYAN, i)
         time.sleep(0.04)
 
+
 def data_input(list_ask):
     def list_of_measures(s):
         try:
@@ -49,6 +50,7 @@ def data_input(list_ask):
         except ValueError:
             print("[!] i dati inseriti non sono validi!")
             return list_of_measures(s)
+
     list_mis = []
     for ask in list_ask:
         data = list_of_measures(ask)
@@ -56,18 +58,15 @@ def data_input(list_ask):
             return None
         list_mis.append(data)
     return list_mis
-# def data_input(list_ask):
-#     def list_of_measures(s):
-#         try:
-#             question = float(input(s.ljust(22, ' ')))
-#             return question
-#         except ValueError:
-#             print("[!] i dati inseriti non sono validi!")
-#             return list_of_measures(s)
-#     list_mis = []
-#     for ask in list_ask:
-#         list_mis.append(list_of_measures(ask))
-#     return list_mis
+
+
+
+
+def check(lst, func):
+    misure = data_input(lst)
+    if misure:
+        return func(misure)
+    return
 
 
 def nastro_barra():
@@ -113,23 +112,25 @@ if __name__ == "__main__":
             print(Fore.LIGHTGREEN_EX)
             if dom in lista_piega_fissa:
 
-                lst = data_input(list_ask_piega)
-                if not lst:
-                    pass
-                else:
-                    PiegaFissa(lst[0], lst[1], lst[2], lst[3]).printMisure()
+                    PiegaFissa()()
 
             elif dom in nastr:
                 nastro_barra()
             elif dom in proporzioni:
                 prop()
             elif dom in st_piega:
-                stoffa_per_piega_fissa(data_input(list_ask_stoffa))
+                lst = data_input(list_ask_stoffa)
+                if not lst:
+                    pass
+                else:
+                    stoffa_per_piega_fissa(lst)
 
             elif dom in onda7:
-                
-                print(Fore.RED + "[!]" + Fore.YELLOW + " '7 GANCI VUOTI = 14.34 cm con la fettuccia da 7 cm" + Fore.LIGHTGREEN_EX)
-                print(Fore.RED + "[!]" + Fore.YELLOW + " '3 GANCI VUOTI = 14.46 cm con la fettuccia da 9 cm" + Fore.LIGHTGREEN_EX)
+
+                print(
+                    Fore.RED + "[!]" + Fore.YELLOW + " '7 GANCI VUOTI = 14.34 cm con la fettuccia da 7 cm" + Fore.LIGHTGREEN_EX)
+                print(
+                    Fore.RED + "[!]" + Fore.YELLOW + " '3 GANCI VUOTI = 14.46 cm con la fettuccia da 9 cm" + Fore.LIGHTGREEN_EX)
 
                 lstond = onda_input()
                 ond(lstond[0], lstond[1], lstond[2], lstond[3], lstond[4])
@@ -153,8 +154,8 @@ if __name__ == "__main__":
             elif dom in ["cls", "clear", "erase"]:
                 os.system(CLEAR_SCREEN)
             else:
-                #print(Fore.LIGHTRED_EX)
+                # print(Fore.LIGHTRED_EX)
                 print(alert + ' commando non trovato...\n'
-                    f'{alert} [ help ] per la lista dei comandi\n'
-                    '[' + chr(10071) + '] [ stop ] per fermare il programma')
+                              f'{alert} [ help ] per la lista dei comandi\n'
+                              '[' + chr(10071) + '] [ stop ] per fermare il programma')
                 print(Fore.LIGHTCYAN_EX)
