@@ -1,10 +1,16 @@
 
+
+
+class InputError(BaseException):
+    pass
+
+
 class DataInput:
     def __init__(self):
         if self.__class__.__name__ == 'PiegaFissa':
             self.list_ask = ["m. piega:", "m. dentro:", "m. tenda:", "m. stoffa:"]
         if self.__class__.__name__ == 'PiegaTubolare':
-            self.list_ask = ['misura tenda:', 'stoffa:', 'piega:', 'piega dentro:', 'spazio tra pieghe:']
+            self.list_ask = ['piega:',  'piega dentro:', 'spazio tra pieghe:','misura tenda:', 'stoffa:' ]
         if self.__class__.__name__ == 'StoffaPiegaFissa':
             self.list_ask = ['tenda:', 'piega:', 'piega dentro:']
 
@@ -41,14 +47,4 @@ class DataInput:
 def func(lst):
     for i in lst:
         print(f"----{i}")
-
-
-    
-
-
-
-
-
-
-
 

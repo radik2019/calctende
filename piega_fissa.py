@@ -38,6 +38,11 @@ class PiegaFissa(DataInput):
             self.set_intervallo()
             self.setListaMisurePronte()
     def __call__(self):
+        """
+
+        @rtype: object
+        return: None
+        """
         self.printMisure()
         
     def set_piega(self) -> tuple:

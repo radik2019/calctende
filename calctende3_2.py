@@ -60,8 +60,6 @@ def data_input(list_ask):
     return list_mis
 
 
-
-
 def check(lst, func):
     misure = data_input(lst)
     if misure:
@@ -88,7 +86,11 @@ def nastro_barra():
         pass
     return ' '
 
-
+def check_app(obj):
+    try:
+        obj()()
+    except TypeError:
+        pass
 if __name__ == "__main__":
     if sys.platform == "linux":
         CLEAR_SCREEN = "clear"
@@ -105,14 +107,18 @@ if __name__ == "__main__":
         ondal = ['tende a onda', 'onda']
         onda7 = ['onda', 'onda7', 'onda 7cm', 'fettuccia 7 cm', 'tende a onda', 'onda']
         nastr = ['nastro', 'nastro_barra', 'nastrobarra', 'nastro barra']
+
         dom = 23
         while dom != 'stop':
             print(Fore.LIGHTCYAN_EX)
             dom = input('[>]\t').lower()
             print(Fore.LIGHTGREEN_EX)
-            if dom in lista_piega_fissa:
 
-                    PiegaFissa()()
+            if dom in lista_piega_fissa:
+                check_app(PiegaFissa)
+            elif dom == "ptube":
+                check_app(PiegaTubolare)
+
 
             elif dom in nastr:
                 nastro_barra()
@@ -135,8 +141,10 @@ if __name__ == "__main__":
                 lstond = onda_input()
                 ond(lstond[0], lstond[1], lstond[2], lstond[3], lstond[4])
 
-            elif dom == "ptube":
-                pg(data_input(list_ask_tub))
+
+
+
+
 
             elif dom == "help":
                 help()
