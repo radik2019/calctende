@@ -1,31 +1,15 @@
 from data_input import *
 
-
 class PiegaTubolare(DataInput):
     """calcoli per la tenda a pieghe tublolari"""
 
     def __init__(self, *args):
-        super().__init__()
-        if all(args) and len(args) == 5:
-            if max(args[0], args[1], args[2]) < args[3] < args[4]:
-                self.piega = args[0]
-                self.piega_den = args[1]
-                self.space = args[2]
-                self.m_tend = args[3]
-                self.m_stoff = args[4]
-                self.lst = []
-                self.coeficente: int = 0
-            else:
-                raise InputError("[ ! ] Inserisci dati sensati blea")
-        else:
-            self.readyToInput = self.data_input()
-            if (max(self.readyToInput[0], self.readyToInput[1], self.readyToInput[2]) \
-                    < self.readyToInput[3] < self.readyToInput[4]):
-                self.piega, self.piega_den, self.space, self.m_tend, self.m_stoff = self.readyToInput
-                self.lst = []
-                self.coeficente: int = 0
-            else:
-                raise InputError("[ ! ] Inserisci dati sensati blea")
+        
+        super().__init__(*args)
+        self.lst = []
+        self.coeficente: int = 0
+        if not max(self.piega, self.piega_den, self.space) < self.m_tend < self.m_stoff:
+            raise InputError("[ ! ] Inserisci dati sensati blea")
 
     def __print_header(self):
         print(

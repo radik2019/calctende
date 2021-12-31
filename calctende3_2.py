@@ -114,50 +114,52 @@ if __name__ == "__main__":
             dom = input('[>]\t').lower()
             print(Fore.LIGHTGREEN_EX)
 
-        if dom in lista_piega_fissa: # Piega fissa
-            check_app(PiegaFissa)
-        elif dom == "ptube":         # piega fissa tubolare
-            check_app(PiegaTubolare)
-        elif dom in st_piega:        # stoffa per piega fissa
-            check_app(StoffaPiegaFissa)
-
-        elif dom in nastr:
-            nastro_barra()
-        elif dom in proporzioni:
-            prop()
-        elif dom in onda7:
-            print(
-                Fore.RED + "[!]" + Fore.YELLOW + " '7 GANCI VUOTI = 14.34 cm con la fettuccia da 7 cm" + Fore.LIGHTGREEN_EX)
-            print(
-                Fore.RED + "[!]" + Fore.YELLOW + " '3 GANCI VUOTI = 14.46 cm con la fettuccia da 9 cm" + Fore.LIGHTGREEN_EX)
-
-            lstond = onda_input()
-            ond(lstond[0], lstond[1], lstond[2], lstond[3], lstond[4])
+            if dom in lista_piega_fissa:
+                check_app(PiegaFissa)
+            elif dom == "ptube":
+                check_app(PiegaTubolare)
 
 
+            elif dom in nastr:
+                nastro_barra()
+            elif dom in proporzioni:
+                prop()
+            elif dom in st_piega:
+                check_app(StoffaPiegaFissa)
+
+            elif dom in onda7:
+
+                print(
+                    Fore.RED + "[!]" + Fore.YELLOW + " '7 GANCI VUOTI = 14.34 cm con la fettuccia da 7 cm" + Fore.LIGHTGREEN_EX)
+                print(
+                    Fore.RED + "[!]" + Fore.YELLOW + " '3 GANCI VUOTI = 14.46 cm con la fettuccia da 9 cm" + Fore.LIGHTGREEN_EX)
+
+                lstond = onda_input()
+                ond(lstond[0], lstond[1], lstond[2], lstond[3], lstond[4])
 
 
 
 
-        elif dom == "help":
-            help()
 
-        elif dom in ["coeficente", "coef"]:
-            list_ask_coef = input_coef()
-            coef(list_ask_coef[0], list_ask_coef[1], list_ask_coef[2])
 
-        elif dom == "stop":
-            print("[!] a presto!\n\n")
-        elif dom in ["preventivo", "prev"]:
-            preventivo.start()
-        elif dom in ["tenda romana", "romana", "steccata", "tenda steccata"]:
-            tenda_romana.t_romana(data_input(["altezza tenda", 'fettuccia', "basso", "bacchette"]))
-        elif dom in ["cls", "clear", "erase"]:
-            os.system(CLEAR_SCREEN)
-        else:
-            # print(Fore.LIGHTRED_EX)
-            print(alert + ' commando non trovato...\n'
-                          f'{alert} [ help ] per la lista dei comandi\n'
-                          '[' + chr(10071) + '] [ stop ] per fermare il programma')
-            print(Fore.LIGHTCYAN_EX)
+            elif dom == "help":
+                help()
 
+            elif dom in ["coeficente", "coef"]:
+                list_ask_coef = input_coef()
+                coef(list_ask_coef[0], list_ask_coef[1], list_ask_coef[2])
+
+            elif dom == "stop":
+                print("[!] a presto!\n\n")
+            elif dom in ["preventivo", "prev"]:
+                preventivo.start()
+            elif dom in ["tenda romana", "romana", "steccata", "tenda steccata"]:
+                tenda_romana.t_romana(data_input(["altezza tenda", 'fettuccia', "basso", "bacchette"]))
+            elif dom in ["cls", "clear", "erase"]:
+                os.system(CLEAR_SCREEN)
+            else:
+                # print(Fore.LIGHTRED_EX)
+                print(alert + ' commando non trovato...\n'
+                              f'{alert} [ help ] per la lista dei comandi\n'
+                              '[' + chr(10071) + '] [ stop ] per fermare il programma')
+                print(Fore.LIGHTCYAN_EX)

@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 from pretyPrint import *
 from setup_data import *
 import click
@@ -14,29 +16,18 @@ class PiegaFissa(DataInput):
     PRINTED_WIDTH = 30
     APP_NAME = ' '.join(list("PIEGA FISSA")).center(PRINTED_WIDTH, ' ')
 
-    def __init__(self, piega_aprossimata=None, m_dentro=None, misura_tenda=None, misura_stoffa=None):
-        super().__init__()
-        self.exitFlag = True
-        if not all((piega_aprossimata, m_dentro, misura_tenda, misura_stoffa)):
-            self.readyToInput = self.data_input()
-            if self.readyToInput:
-                self.piega_aprossimata, self.m_dentro, self.misura_tenda, self.misura_stoffa = self.readyToInput
-            else:
-                self.exitFlag = False
-        else:
-            self.piega_aprossimata = piega_aprossimata
-            self.m_dentro = m_dentro
-            self.misura_tenda = misura_tenda
-            self.misura_stoffa = misura_stoffa
+    def __init__(self, *args):
+        super().__init__(*args)
+        print(args)
 
-        if self.exitFlag:
-            self.asseFlag = True
-            self.listaMisurePronte = []
-            self.asseDaStiroMisure = None
-            self.set_piega()
-            self.setNumeroPieghe()
-            self.set_intervallo()
-            self.setListaMisurePronte()
+        self.asseFlag = True
+        self.listaMisurePronte = []
+        self.asseDaStiroMisure = None
+        self.set_piega()
+        self.setNumeroPieghe()
+        self.set_intervallo()
+        self.setListaMisurePronte()
+        self.exitFlag = True
     def __call__(self):
         """
 
