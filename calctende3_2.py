@@ -65,7 +65,11 @@ def check(lst, func):
     if misure:
         return func(misure)
     return
-
+def check_app(obj):
+    try:
+        obj()()
+    except TypeError:
+        pass
 
 def nastro_barra():
     fettuccia = input('da dove viene la stoffa?\t')
@@ -86,11 +90,7 @@ def nastro_barra():
         pass
     return ' '
 
-def check_app(obj):
-    try:
-        obj()()
-    except TypeError:
-        pass
+
 if __name__ == "__main__":
     if sys.platform == "linux":
         CLEAR_SCREEN = "clear"
@@ -114,33 +114,22 @@ if __name__ == "__main__":
             dom = input('[>]\t').lower()
             print(Fore.LIGHTGREEN_EX)
 
-            if dom in lista_piega_fissa:
+            if dom in lista_piega_fissa: # Piega fissa
                 check_app(PiegaFissa)
-            elif dom == "ptube":
-                check_app(PiegaTubolare)
-
-
-            elif dom in nastr:
-                nastro_barra()
-            elif dom in proporzioni:
-                prop()
-            elif dom in st_piega:
+            elif dom == "ptube":         # Piega tubolare
+                check_app(PiegaTubolare) 
+            elif dom in st_piega:        # Piega tubolare
                 check_app(StoffaPiegaFissa)
 
+            elif dom in nastr:           # Nastro barra
+                nastro_barra()
+            elif dom in proporzioni:     # taglio della stoffa in proporzioni
+                prop()
+
+
             elif dom in onda7:
-
-                print(
-                    Fore.RED + "[!]" + Fore.YELLOW + " '7 GANCI VUOTI = 14.34 cm con la fettuccia da 7 cm" + Fore.LIGHTGREEN_EX)
-                print(
-                    Fore.RED + "[!]" + Fore.YELLOW + " '3 GANCI VUOTI = 14.46 cm con la fettuccia da 9 cm" + Fore.LIGHTGREEN_EX)
-
                 lstond = onda_input()
                 ond(lstond[0], lstond[1], lstond[2], lstond[3], lstond[4])
-
-
-
-
-
 
             elif dom == "help":
                 help()

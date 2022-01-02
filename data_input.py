@@ -1,21 +1,6 @@
 
 
-INPUT_VARIABLE = {
-        'PiegaFissa': [
-            # VARIABLES NAME
-            ['piega_aprossimata', 'm_dentro', 'misura_tenda', 'misura_stoffa'],
-
-            # INPUT PRINT
-            ["m. piega:", "m. dentro:", "m. tenda:", "m. stoffa:"]],
-
-        'PiegaTubolare': [
-            ['piega', 'piega_den', 'space', 'm_tend', 'm_stoff'],
-            ['piega:',  'piega dentro:', 'spazio tra pieghe:','misura tenda:', 'stoffa:' ]],
-
-        'StoffaPiegaFissa': [['tenda', 'piega', 'piega_dentro'],
-            ['tenda:', 'piega:', 'piega dentro:']]
-    }
-
+from globals import PRINT_WIDTH, INPUT_VARIABLE
 
 class InputError(BaseException):
     pass
@@ -25,9 +10,16 @@ class DataInput:
 
 
     def __new__(cls, *args):
-        print(args)
+
         if cls.__name__ in INPUT_VARIABLE:
-            return object.__new__(cls)
+            if len(args) == len(INPUT_VARIABLE[cls.__name__][0]):
+                return object.__new__(cls)
+            elif len(args) == 0:
+                return object.__new__(cls)
+            else:
+                raise InputError("Numero di dati inseriti errato")
+        else:
+            raise InputError(f"La classe {cls.__name__} non e nel database")
 
     def __init__(self, *args):
         self.list_ask = INPUT_VARIABLE[self.__class__.__name__][1]
@@ -47,7 +39,7 @@ class DataInput:
     def data_input(self):
         def list_of_measures(s):
             try:
-                question = input(s.ljust(22, ' '))
+                question = input(s.ljust(PRINT_WIDTH, '.') + ': ')
                 if question.lower() == "stop":
                     return None
                 question = float(question)

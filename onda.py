@@ -70,7 +70,8 @@ def onda_input():
         else:
             print("[!] inserisci '7' o '9'. indica il tipo di fettuccia")
             return input_fettuccia()                  
-
+    print(Fore.RED + "[!]" + Fore.YELLOW + " '7 GANCI VUOTI = 14.34 cm con la fettuccia da 7 cm" + Fore.LIGHTGREEN_EX)
+    print(Fore.RED + "[!]" + Fore.YELLOW + " '3 GANCI VUOTI = 14.46 cm con la fettuccia da 9 cm" + Fore.LIGHTGREEN_EX)
     passo = 0
     pass_func()
 

@@ -99,7 +99,7 @@ def calcolo_ond(presunta_misura_bin,
 def print_ond(mis_ef, stoff, spaz_ganc, nodi, ganci, binary_type):
     dct = json_read("setup_data.json")
     prezzo = (dct["prezzo_onda"] * (stoff /100))
-    
+
     if binary_type == 2:
         prezzo += (dct["orli"] * 4)
     if binary_type == 1:
@@ -132,6 +132,8 @@ def ond(presunta_misura_bin, passo,  taschini_vuoti, binary_type, fettuccia):
 
     misura_effettiva_binario3, stoffa3, spazio_tra_ganci3, nodi3, ganci3 = calcolo_ond(presunta_misura_bin,\
         passo, taschini_vuoti, binary_type, "node", fettuccia)
+    print(Fore.RED + "[!]" + Fore.YELLOW + " '7 GANCI VUOTI = 14.34 cm con la fettuccia da 7 cm" + Fore.LIGHTGREEN_EX)
+    print(Fore.RED + "[!]" + Fore.YELLOW + " '3 GANCI VUOTI = 14.46 cm con la fettuccia da 9 cm" + Fore.LIGHTGREEN_EX)
     print("S I N G O L O".center(LARGE, " ") if binary_type == 1 else "D O P P I O".center(LARGE, " "))
     if misura_effettiva_binario1 == presunta_misura_bin:
         print_ond(misura_effettiva_binario1, stoffa1, spazio_tra_ganci1, nodi1, ganci1, binary_type)
