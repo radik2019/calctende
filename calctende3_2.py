@@ -133,6 +133,9 @@ if __name__ == "__main__":
 
             elif dom == "help":
                 help()
+            elif [i.lower() for i in dom.split()] == ["help", "onda"]:
+                with open("doc/help_onda", "r") as df:
+                    print(df.read())
 
             elif dom in ["coeficente", "coef"]:
                 list_ask_coef = input_coef()
