@@ -4,6 +4,7 @@ services:
   web:
     build: .
     command: python /calctende_app/manage.py runserver 0.0.0.0:8000
+    container_name: calc_tende
     volumes:
       - .:/calctende_app
     ports:
@@ -20,6 +21,7 @@ services:
       - SECRET_KEY=$SECRET_KEY
 
   db:
+    container_name: calc_tende_db
     env_file:
       - .env
     image: postgres
