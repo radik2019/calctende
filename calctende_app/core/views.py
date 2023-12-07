@@ -1,42 +1,38 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
-
-
 
 from django import forms
 
+from core.managers.calculator_manager import FixedFold
+
 
 class WaveForm(forms.Form):
-    your_name = forms.CharField(label="Your name", max_length=100)
-    interval = forms.DurationField(label="sdgfdg")
-# Create your views here.
-class CalcWaves(View):
+    fold_approximated = forms.FloatField(label="misura della piega")
+    interior_fold = forms.FloatField(label="piega dentro")
+    awning_measure = forms.FloatField(label="misura tenda")
+    cloth_measure = forms.FloatField(label="misura stoffa")
 
+
+
+class CalcWaves(View):
 
     def get(self, request, *args, **kwargs):
         form = WaveForm()
-        return render(request, 'base.html', {'form':form})
-    
+        return render(request, 'base.html', {'form': form})
+
     def post(self, request, *args, **kwargs):
-        form = WaveForm()
+        form = WaveForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('calcwave')
-        return render(request, 'base.html', {'form':form})
 
+            df = FixedFold(
+                form.cleaned_data.get("fold_approximated"),
+                form.cleaned_data.get("interior_fold"),
+                form.cleaned_data.get("awning_measure"),
+                form.cleaned_data.get("cloth_measure"))
 
-class AddPage(View):
-    def get(self, request):
-        form = AddPostForm()
-        return render(request, 'women/addpage.html', {'menu': menu, 'title': 'Добавление статьи', 'form': form})
- 
-    def post(self, request):
-        form = AddPostForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
- 
-        return render(request, 'women/addpage.html', {'menu': menu, 'title': 'Добавление статьи', 'form': form})
+            lst = df.get_measure_list()
+            form.is_valid()
 
-
+            return render(request, 'base.html', {'form': form, 'result': lst})
+        return render(request, 'base.html', {'form': form})
