@@ -1,34 +1,20 @@
-from django.forms import Widget, NumberInput
-from django.http import HttpResponse
-from django.shortcuts import render, redirect
+
+from django.shortcuts import render
 from django.views import View
 
-from django import forms
-
+from core.forms import FixedFoldForm
 from core.managers.calculator_manager import FixedFoldManager
 
 
-class WaveForm(forms.Form):
-    fold_approximated = forms.FloatField(label="Misura della piega", widget=forms.widgets.NumberInput(
-        attrs={'class': 'form-control col-md-6', 'style': 'margin-right: 23px'}))
-    interior_fold = forms.FloatField(label="Piega dentro", widget=forms.widgets.NumberInput(
-        attrs={'class': 'form-control col-md-6'}))
-    awning_measure = forms.FloatField(label="Misura tenda", widget=forms.widgets.NumberInput(
-        attrs={'class': 'form-control col-md-6'}))
-    cloth_measure = forms.FloatField(label="Misura stoffa", widget=forms.widgets.NumberInput(
-        attrs={'class': 'form-control'}))
-
-
-class CalcFixedFold(View):
+class CalcFixedFoldView(View):
 
     def get(self, request, *args, **kwargs):
-        form = WaveForm()
+        form = FixedFoldForm()
         return render(request, 'fixed_fold.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
-        form = WaveForm(request.POST)
+        form = FixedFoldForm(request.POST)
         if form.is_valid():
-
             df = FixedFoldManager(
                 form.cleaned_data.get("fold_approximated"),
                 form.cleaned_data.get("interior_fold"),
@@ -36,7 +22,7 @@ class CalcFixedFold(View):
                 form.cleaned_data.get("cloth_measure"))
             lst = df.get_measure_list()
             form.is_valid()
-            context={
+            context = {
                 'form': form,
                 'info': {
                     'awning_measure': df.awning_measure,
