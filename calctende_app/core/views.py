@@ -28,6 +28,7 @@ class CalcFixedFold(View):
     def post(self, request, *args, **kwargs):
         form = WaveForm(request.POST)
         if form.is_valid():
+
             df = FixedFoldManager(
                 form.cleaned_data.get("fold_approximated"),
                 form.cleaned_data.get("interior_fold"),
@@ -35,8 +36,18 @@ class CalcFixedFold(View):
                 form.cleaned_data.get("cloth_measure"))
             lst = df.get_measure_list()
             form.is_valid()
-
-            return render(request, 'fixed_fold.html', {'form': form, 'result': lst})
+            context={
+                'form': form,
+                'info': {
+                    'awning_measure': df.awning_measure,
+                    'effective_fold': round(df.effective_fold, 2),  # misura piega
+                    'cloth_measure': df.cloth_measure,  # misura stoffa
+                    'interior_fold': round(df.interior_fold, 2),  # piega dentro
+                    'fold_count': int(df.fold_count)
+                },
+                'result': lst
+            }
+            return render(request, 'fixed_fold.html', context)
         return render(request, 'fixed_fold.html', {'form': form})
 
 

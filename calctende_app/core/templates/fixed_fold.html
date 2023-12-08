@@ -110,25 +110,67 @@
             <button type="submit" class="btn btn-default alert-info">calcola</button>
         </form>
     </div>
-    <br>
 
-    {% for value in result %}
-        <li class="timeline timeline-item" style=" line-height: 12%;  ">
-            <span class="timeline-item-icon | faded-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-                    <path fill="none" d="M0 0h24v24H0z" />
-                    <path fill="currentColor" d="M12 13H4v-2h8V4l8 8-8 8z" />
-                </svg>
-            </span>
-            <div class="timeline-item-description" >
-                {{ value }}
+
+    {% if result %}
+
+         <div class="row">
+            <div class="card-body rounded-2 col-md-auto">
+                {% for value in result %}
+                    <li class="timeline timeline-item" style=" line-height: 1px;  ">
+                        <span class="timeline-item-icon | faded-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="none" d="M0 0h24v24H0z" />
+                                <path fill="currentColor" d="M12 13H4v-2h8V4l8 8-8 8z" />
+                            </svg>
+                        </span>
+                        <div class="timeline-item-description" >
+                            {{ value }}
+                        </div>
+                    </li>
+                {% endfor %}
             </div>
-        </li>
+            <div class="card-body rounded-2 col-3">
+                <table class="table table-borderless">
+                    <thead>
+                        <tr>
 
-    {% endfor %}#}
-
-
-
+                            <th scope="col">Descrizione</th>
+                            <th scope="col">Quantita`</th>
+                            <th scope="col">Unita` di misura</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Numero pieghe:</td>
+                            <td><b style="font-size: 20px">{{ info.fold_count }}</b></td>
+                            <td>Pezzi</td>
+                        </tr>
+                        <tr>
+                            <td>Misura piega dentro:</td>
+                            <td><b style="font-size: 20px">{{ info.interior_fold }}</b></td>
+                            <td>Centimetri</td>
+                        </tr>
+                        <tr>
+                            <td>Misura piega effettiva:</td>
+                            <td><b style="font-size: 20px">{{ info.effective_fold }}</b></td>
+                            <td>Centimetri</td>
+                        </tr>
+                        <tr>
+                            <td>Stoffa usata:</td>
+                            <td><b style="font-size: 20px">{{ info.cloth_measure }}</b></td>
+                            <td>Metri</td>
+                        </tr>
+                        <tr>
+                            <td>Largezza tendaggio:</td>
+                            <td><b style="font-size: 20px">{{ info.awning_measure }}</b></td>
+                            <td>Metri</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}
 
 
