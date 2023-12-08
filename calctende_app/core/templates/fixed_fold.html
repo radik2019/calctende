@@ -3,29 +3,18 @@
 {% load static %}
 
 {% block content %}
-    <style>
-        .card-body{
-            background-color: #ffffff;
-            margin: 23px;
-            padding: 44px;
-        }
-        form{
-            margin: 23px;
-        }
-    </style>
+
     <div class="card-body rounded-2">
 
+        <h3 style="text-align: center">Calcolo della tenda piega fissa</h3>
+        <form method="post" class="form-control-lg row-cols-3"> {% csrf_token %}
 
-            <h3 style="text-align: center">Calcolo della tenda piega fissa</h3>
-            <form method="post" class="form-control-lg row-cols-3"> {% csrf_token %}
+            <div class="col-12">
+                {{ form.as_div }}
+            </div>
 
-                <div class="col-12">
-                    {{ form.as_div }}
-                </div>
-
-                <input type="submit" value="Calcola">
-            </form>
-
+            <input type="submit" value="Calcola">
+        </form>
     </div>
     <br>
     <div class="card-body rounded-2">
