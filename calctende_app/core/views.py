@@ -1,3 +1,4 @@
+from django.forms import Widget, NumberInput
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.views import View
@@ -8,10 +9,14 @@ from core.managers.calculator_manager import FixedFold
 
 
 class WaveForm(forms.Form):
-    fold_approximated = forms.FloatField(label="misura della piega")
-    interior_fold = forms.FloatField(label="piega dentro")
-    awning_measure = forms.FloatField(label="misura tenda")
-    cloth_measure = forms.FloatField(label="misura stoffa")
+    fold_approximated = forms.FloatField(label="Misura della piega", widget=forms.widgets.NumberInput(
+        attrs={'class': 'form-control col-md-6', 'style': 'margin-right: 23px'}))
+    interior_fold = forms.FloatField(label="Piega dentro", widget=forms.widgets.NumberInput(
+        attrs={'class': 'form-control col-md-6'}))
+    awning_measure = forms.FloatField(label="Misura tenda", widget=forms.widgets.NumberInput(
+        attrs={'class': 'form-control col-md-6'}))
+    cloth_measure = forms.FloatField(label="Misura stoffa", widget=forms.widgets.NumberInput(
+        attrs={'class': 'form-control'}))
 
 
 
@@ -19,12 +24,11 @@ class CalcWaves(View):
 
     def get(self, request, *args, **kwargs):
         form = WaveForm()
-        return render(request, 'base.html', {'form': form})
+        return render(request, 'fixed_fold.html', {'form': form})
 
     def post(self, request, *args, **kwargs):
         form = WaveForm(request.POST)
         if form.is_valid():
-
             df = FixedFold(
                 form.cleaned_data.get("fold_approximated"),
                 form.cleaned_data.get("interior_fold"),
@@ -34,5 +38,17 @@ class CalcWaves(View):
             lst = df.get_measure_list()
             form.is_valid()
 
-            return render(request, 'base.html', {'form': form, 'result': lst})
-        return render(request, 'base.html', {'form': form})
+            return render(request, 'fixed_fold.html', {'form': form, 'result': lst})
+        return render(request, 'fixed_fold.html', {'form': form})
+
+
+class HomeView(View):
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'index.html')
+
+
+class UnderCostructionView(View):
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'under_construction.html')
