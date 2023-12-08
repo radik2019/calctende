@@ -5,7 +5,7 @@ from django.views import View
 
 from django import forms
 
-from core.managers.calculator_manager import FixedFold
+from core.managers.calculator_manager import FixedFoldManager
 
 
 class WaveForm(forms.Form):
@@ -19,8 +19,7 @@ class WaveForm(forms.Form):
         attrs={'class': 'form-control'}))
 
 
-
-class CalcWaves(View):
+class CalcFixedFold(View):
 
     def get(self, request, *args, **kwargs):
         form = WaveForm()
@@ -29,12 +28,11 @@ class CalcWaves(View):
     def post(self, request, *args, **kwargs):
         form = WaveForm(request.POST)
         if form.is_valid():
-            df = FixedFold(
+            df = FixedFoldManager(
                 form.cleaned_data.get("fold_approximated"),
                 form.cleaned_data.get("interior_fold"),
                 form.cleaned_data.get("awning_measure"),
                 form.cleaned_data.get("cloth_measure"))
-
             lst = df.get_measure_list()
             form.is_valid()
 

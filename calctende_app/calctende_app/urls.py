@@ -17,12 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from core.views import CalcWaves, HomeView, UnderCostructionView
+from core.views import CalcFixedFold, HomeView, UnderCostructionView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('under_costruction', UnderCostructionView.as_view(), name='under_costruction'),
     path('', HomeView.as_view(), name='homepage'),
-    path('calcwave/', CalcWaves.as_view(), name='calcwave')
+    path('calcwave/', CalcFixedFold.as_view(), name='calcwave')
 
 ]

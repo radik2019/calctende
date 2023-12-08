@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 
-class FixedFold:
+class FixedFoldManager:
     ASSE_DA_STIRO = 121
     PRINTED_WIDTH = 30
     APP_NAME = ' '.join(list("PIEGA FISSA")).center(PRINTED_WIDTH, ' ')
@@ -49,5 +49,5 @@ class FixedFold:
 
 
 if __name__ == "__main__":
-    pf = FixedFold(8, 8, 122, 345)
+    pf = FixedFoldManager(8, 8, 122, 345)
     print(pf.get_measure_list())
