@@ -99,6 +99,16 @@
 
     </style>
 
+
+
+
+
+    {% if error_message %}
+        <div class="alert alert-danger" role="alert">
+          {{ error_message }}
+        </div>
+    {% endif %}
+
     <div class="card-body rounded-2">
         <h3 style="text-align: center">Calcolo della tenda piega fissa</h3>
         <form method="post" > {% csrf_token %}
@@ -159,12 +169,17 @@
                         <tr>
                             <td>Stoffa usata:</td>
                             <td><b style="font-size: 20px">{{ info.cloth_measure }}</b></td>
-                            <td>Metri</td>
+                            <td>Centimetri</td>
                         </tr>
                         <tr>
                             <td>Largezza tendaggio:</td>
                             <td><b style="font-size: 20px">{{ info.awning_measure }}</b></td>
-                            <td>Metri</td>
+                            <td>Centimetri</td>
+                        </tr>
+                        <tr>
+                            <td>piega sovrapposta:</td>
+                            <td><b style="font-size: 20px">{{ info.folding_overlay }}</b></td>
+                            <td>Centimetri</td>
                         </tr>
                     </tbody>
                 </table>

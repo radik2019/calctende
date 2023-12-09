@@ -1,4 +1,3 @@
-
 from django.shortcuts import render
 from django.views import View
 
@@ -15,13 +14,16 @@ class CalcFixedFoldView(View):
     def post(self, request, *args, **kwargs):
         form = FixedFoldForm(request.POST)
         if form.is_valid():
+            fold_approximated = form.cleaned_data.get("fold_approximated")
+            interior_fold = form.cleaned_data.get("interior_fold")
+            awning_measure = form.cleaned_data.get("awning_measure")
+            cloth_measure = form.cleaned_data.get("cloth_measure")
             df = FixedFoldManager(
-                form.cleaned_data.get("fold_approximated"),
-                form.cleaned_data.get("interior_fold"),
-                form.cleaned_data.get("awning_measure"),
-                form.cleaned_data.get("cloth_measure"))
+                fold_approximated, interior_fold, awning_measure, cloth_measure)
+            error_message = df.error_message()
+            if error_message:
+                return render(request, 'fixed_fold.html', {'form': form, 'error_message': error_message})
             lst = df.get_measure_list()
-            form.is_valid()
             context = {
                 'form': form,
                 'info': {
@@ -29,7 +31,8 @@ class CalcFixedFoldView(View):
                     'effective_fold': round(df.effective_fold, 2),  # misura piega
                     'cloth_measure': df.cloth_measure,  # misura stoffa
                     'interior_fold': round(df.interior_fold, 2),  # piega dentro
-                    'fold_count': int(df.fold_count)
+                    'fold_count': int(df.fold_count),
+                    'folding_overlay': round((lst[1] - lst[0]) / 2, 2)
                 },
                 'result': lst
             }
@@ -40,10 +43,16 @@ class CalcFixedFoldView(View):
 class HomeView(View):
 
     def get(self, request, *args, **kwargs):
-        return render(request, 'index.html')
+        return render(request, 'home_page.html')
 
 
 class UnderCostructionView(View):
 
     def get(self, request, *args, **kwargs):
         return render(request, 'under_construction.html')
+
+
+class WhoWeAreView(View):
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'who_we_are.html')

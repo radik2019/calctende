@@ -17,12 +17,12 @@ class FixedFoldManager:
         self.asseFlag = True
         self.ready_measure_list = []
         self.asseDaStiroMisure = None
-        self.set_fold()
-        self.set_fold_count()
-        self.set_fold_range()
-        self.__set_ready_measure_list()
         self.exitFlag = True
 
+    def error_message(self):
+        remaning_cloth = self.cloth_measure - ((self.interior_fold * 2) + self.awning_measure)
+        if remaning_cloth < self.fold_approximated + 2:
+            return "misura della stoffa troppo piccola per il tendaggio scelto"
     def set_fold(self) -> tuple:
         self.effective_fold = self.awning_measure / (self.awning_measure // self.fold_approximated)
 
@@ -44,8 +44,13 @@ class FixedFoldManager:
             self.ready_measure_list.append(round(i, 2))
 
     def get_measure_list(self):
-        self.__set_ready_measure_list()
-        return self.ready_measure_list
+        error = self.error_message()
+        if not error:
+            self.set_fold()
+            self.set_fold_count()
+            self.set_fold_range()
+            self.__set_ready_measure_list()
+            return self.ready_measure_list
 
 
 if __name__ == "__main__":
