@@ -1,4 +1,5 @@
-from django.forms import forms
+
+from django import forms
 
 
 class FixedFoldForm(forms.Form):
@@ -9,4 +10,4 @@ class FixedFoldForm(forms.Form):
     awning_measure = forms.FloatField(label="Misura tenda", widget=forms.widgets.NumberInput(
         attrs={'class': 'form-control col-md-6'}))
     cloth_measure = forms.FloatField(label="Misura stoffa", widget=forms.widgets.NumberInput(
-        attrs={'class': "form-control"}))
+        attrs={'class': "form-control col-md-6'"}))
