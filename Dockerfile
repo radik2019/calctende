@@ -15,6 +15,7 @@ RUN pip install --upgrade pip
 RUN pip install -r /calctende_app/requirements.txt
 RUN python manage.py makemigrations
 RUN python manage.py migrate
+RUN python manage.py collectstatic
 
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
