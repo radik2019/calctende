@@ -12,45 +12,55 @@
         .card-body{
 
             background-color: #ffffff;
-            margin: 23px;
-            padding: 24px;
+            margin: 8px;
+            padding: 8px;
         }
     </style>
 
 
-    <nav class="navbar navbar-expand-lg ">
+
+  <div class="card-body rounded-2" style="box-shadow: 0 0 12px 1px #d7c1ff; margin: 23px;  padding: 24px;">
+    <nav class="navbar bg-light fixed-top" style="box-shadow: 0 0 12px 1px #d7c1ff; margin: 23px;  padding: 24px;">
       <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href="#">Tendaggi SRL</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarScroll">
-          <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'who_we_are' %}">Chi siamo</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Calcoli
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-                <li><a class="dropdown-item" href="{% url 'calcwave' %}">Piega fissa</a></li>
-                <li><a class="dropdown-item" href="{% url 'under_costruction' %}">Tenda a onda</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
-            </li>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'homepage' %}">Home</a>
+              </li>
 
-          </ul>
-
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'who_we_are' %}">Chi siamo</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Calcoli
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="{% url 'calcwave' %}">Piega fissa</a></li>
+                  <li><a class="dropdown-item" href="{% url 'under_costruction' %}">Tenda a onda</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex mt-3" role="search">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
         </div>
       </div>
     </nav>
-
-
-    <div class="content">
+  </div>
+  <br>
+  <div class="card-body rounded-2" style="box-shadow: 0 0 12px 1px #d7c1ff; margin: 23px;  padding: 24px;">
         {% block content %}
         {% endblock %}
     </div>
