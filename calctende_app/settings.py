@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-w1kx@^7lw^-f+5-43+q!xz9yn4=xjp%e8j)h_ou_m@+3xr@ygq'
+SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("DEBUG", True)
 
 DB_NAME = os.getenv("DB_NAME")
 DB_HOST = os.getenv("DB_HOST")
@@ -34,7 +34,6 @@ DB_USER = os.getenv("DB_USER")
 UPLOAD_DIR = os.path.join(BASE_DIR, "feeds")
 DATABASE = os.getenv("DATABASE", "sqlite")
 
-DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
