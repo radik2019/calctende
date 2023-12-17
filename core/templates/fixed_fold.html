@@ -42,7 +42,7 @@
 
     .timeline-item {
         display: flex;
-        gap: 24px;
+        gap: 124px;
 
         &+* {
             margin-top: 0;
@@ -135,18 +135,19 @@
 {% if result %}
 
 <div class="row">
-    <div class="card-body rounded-2 col-md-auto" style="box-shadow: 0 0 12px 1px #d7c1ff;">
+    <div class="card-body rounded-2 col-md-auto" style="box-shadow: 0 0 12px 1px #d7c1ff; ">
         {% for value in result %}
-        <li class="timeline timeline-item" style=" line-height: 1px;  ">
+        <li class="timeline timeline-item" style=" line-height: 1px;  gap: {{ value.interval }}px">
             <span class="timeline-item-icon | faded-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
                     <path fill="none" d="M0 0h24v24H0z" />
                     <path fill="currentColor" d="M12 13H4v-2h8V4l8 8-8 8z" />
                 </svg>
             </span>
-            <div class="timeline-item-description">
-                {{ value }}
+            <div class="timeline-item-description" style="color: {{ value.color }}" >
+                {{ value.distance }}
             </div>
+        <div class="timeline-line" style="box-shadow: {{ value.color }} gap: {{ value.interval }}px;"></div>
         </li>
         {% endfor %}
     </div>

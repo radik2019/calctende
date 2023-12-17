@@ -39,9 +39,15 @@ class FixedFoldManager:
         i = 0
         while i < (self.cloth_measure - self.interior_fold * 2):
             i += self.effective_fold
-            self.ready_measure_list.append(round(i, 2))
+            self.ready_measure_list.append({'distance':round(i, 2),
+                                            'interval': self.effective_fold ,
+                                            'type': 'piega',
+                                            'color':'#d7c11f'})
             i += self.fold_interval
-            self.ready_measure_list.append(round(i, 2))
+            self.ready_measure_list.append({'distance':round(i, 2),
+                                            'interval': self.fold_interval ,
+                                            'type': 'intervallo',
+                                            'color':'#d7c1ff'})
 
     def get_measure_list(self):
         error = self.error_message()

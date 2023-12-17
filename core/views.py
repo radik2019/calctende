@@ -32,7 +32,7 @@ class CalcFixedFoldView(View):
                     'cloth_measure': df.cloth_measure,  # misura stoffa
                     'interior_fold': round(df.interior_fold, 2),  # piega dentro
                     'fold_count': int(df.fold_count),
-                    'folding_overlay': round((lst[1] - lst[0]) / 2, 2)
+                    'folding_overlay':  round((lst[1]['distance'] - lst[0]['distance']) / 2, 2)
                 },
                 'result': lst
             }
