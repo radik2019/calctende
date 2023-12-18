@@ -42,12 +42,12 @@ class FixedFoldManager:
             self.ready_measure_list.append({'distance':round(i, 2),
                                             'interval': self.effective_fold ,
                                             'type': 'piega',
-                                            'color':'#d7c11f'})
+                                            'color':'#0094F2'})
             i += self.fold_interval
             self.ready_measure_list.append({'distance':round(i, 2),
                                             'interval': self.fold_interval ,
                                             'type': 'intervallo',
-                                            'color':'#d7c1ff'})
+                                            'color':'#CE02CD'})
 
     def get_measure_list(self):
         error = self.error_message()
