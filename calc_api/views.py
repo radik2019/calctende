@@ -16,8 +16,6 @@ class CalcFixedFoldAPIView(CreateAPIView):
     def post(self, request):
         serializer = CalcFixedFoldSerializer(data=request.data)
         if serializer.is_valid():
-
-
             fold_approximated = serializer.data.get("fold_approximated")
             interior_fold = serializer.data.get("interior_fold")
             awning_measure = serializer.data.get("awning_measure")
