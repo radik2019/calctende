@@ -3,7 +3,6 @@ version: "3.9"
 services:
   web:
     build: .
-
     command: python manage.py runserver 0.0.0.0:8000
     container_name: calc_tende
     volumes:
@@ -12,6 +11,7 @@ services:
       - 8000:8000
     depends_on:
       - db
+      - redis
     env_file:
       - .env
     environment:
@@ -20,6 +20,10 @@ services:
       - DB_PASSWORD=$DB_PASSWORD
       - DB_USER=$DB_USER
       - SECRET_KEY=$SECRET_KEY
+      - CACHE_URL=redis://redis:6379/1
+    networks:
+      - internal_network
+
 
   db:
     container_name: calc_tende_db
@@ -35,5 +39,21 @@ services:
     ports:
       - 5432:5432
 
+  redis:
+    image: redis
+    restart: always
+    expose:
+      - 6379
+    command: redis-server --bind 127.0.0.1
+    networks:
+      - internal_network
+    volumes:
+      - redis_data:/data
+
+networks:
+  internal_network:
+    driver: bridge
+
 volumes:
   postgres_data:
+  redis_data:
