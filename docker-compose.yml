@@ -21,9 +21,6 @@ services:
       - DB_USER=$DB_USER
       - SECRET_KEY=$SECRET_KEY
       - CACHE_URL=redis://redis:6379/1
-    networks:
-      - internal_network
-
 
   db:
     container_name: calc_tende_db
@@ -42,17 +39,11 @@ services:
   redis:
     image: redis
     restart: always
-    expose:
-      - 6379
-    command: redis-server --bind 127.0.0.1
-    networks:
-      - internal_network
+    ports:
+      - "6379:6379"
+    command: redis-server
     volumes:
       - redis_data:/data
-
-networks:
-  internal_network:
-    driver: bridge
 
 volumes:
   postgres_data:
