@@ -3,7 +3,6 @@ version: "3.9"
 services:
   web:
     build: .
-
     command: python manage.py runserver 0.0.0.0:8000
     container_name: calc_tende
     volumes:
@@ -35,5 +34,7 @@ services:
     ports:
       - 5432:5432
 
+
 volumes:
   postgres_data:
+  redis_data:

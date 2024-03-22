@@ -1,11 +1,51 @@
 
 {% extends 'index.html' %}
 {% block content %}
-    <body>
-        <div class="container">
-            <h1>Chi siamo</h1>
-            <p>In elaborazione</p>
-        </div>
-    </body>
+
+
+<style>
+    .my_bordwer{
+
+    border: #dafd87 ;
+    width: 50%; 
+    
+    border-radius: 32px;
+    border-style: groove;
+    box-shadow: 3px 3px 12px #238b03; 
+
+    }
+    input{
+        border-radius: 12px; 
+        height: 53px;
+        font-size: 23px;
+        box-shadow: 3px 3px 12px #0a0a0a; 
+        border: none;
+        padding: 12px;
+        float: right;
+        margin: 23px;
+        font-style: normal;
+        color: #8d8b8b;
+    }
+
+</style>
+
+    <div class="container my_bordwer">
+        <h1>Chi siamo</h1>
+        <p>In elaborazione</p>
+    </div>
+<br>
+
+    <div class="container my_bordwer" style="">
+        <br>
+        ciao
+    </div>
+    <br><br>
+    <label>sdfghj</label>
+    <input type="number" placeholder="Your name.."> 
+    <label>sdfghj</label>
+    <input type="number" placeholder="Your name..">
+    <label>sdfghj</label>
+    <input type="number" placeholder="Your name.."> 
+
 {% endblock %}
 
